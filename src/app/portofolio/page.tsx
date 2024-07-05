@@ -11,12 +11,19 @@ import { useRouter } from "next/navigation";
 import CardProject from "@/components/card/CardProject";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import ProgrammingLanguage from "@/data/ProgrammingLanguage";
+import { Spotlight } from "@/components/ui/spotlight";
+import { useEffect, useState } from "react";
+import { FlipWords } from "@/components/ui/flip-words";
+import { GlareCard } from "@/components/ui/glare-card";
+import SocialMedia from "@/data/SocialMedia";
 
 const Portofolio = () => {
   const aboutMe: typeof AboutMe = AboutMe;
   const projects: typeof Projects = Projects;
+  const socialMedia: typeof SocialMedia = SocialMedia;
   const router = useRouter();
   const proggramingLanguage = ProgrammingLanguage;
+  const title = useState<string[]>(aboutMe.title);
 
   const downloadCV = async () => {
     try {
@@ -24,7 +31,6 @@ const Portofolio = () => {
         responseType: "blob",
       });
 
-      // Buat URL dari Blob
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
@@ -35,9 +41,15 @@ const Portofolio = () => {
       console.error("Error downloading the file:", error);
     }
   };
+
   return (
     <>
       <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-screen">
+        {/* About Me */}
+        <Spotlight
+          className="-top-40 left-0 md:left-60 md:-top-20"
+          fill="white"
+        />
         <div className="flex flex-col justify-between md:items-start gap-5">
           <div className="flex md:flex-row md:items-center gap-10 flex-col md:self-center">
             <div className="flex justify-center mt-8">
@@ -54,7 +66,9 @@ const Portofolio = () => {
             <div>
               <h1 className="text-4xl font-bold mt-4">Hi! I'm</h1>
               <h1 className="text-4xl font-bold">{aboutMe.name}</h1>
-              <h1 className="text-1xl font-semibold">{aboutMe.title}</h1>
+              <h1 className="text-1xl font-semibold">
+                <FlipWords words={title[0]} />
+              </h1>
             </div>
           </div>
           <div className="mt-4">{aboutMe.description} </div>
@@ -66,6 +80,40 @@ const Portofolio = () => {
           </button>
         </div>
 
+        {/* SOCIAL MEDIA */}
+
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-row items-center justify-between">
+            <h2 className="text-2xl font-semibold">Social Media</h2>
+          </div>
+
+          <div className="flex flex-row items-center justify-between">
+            <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-4 mt-6 max-w-6xl">
+              {socialMedia.map((data, index) => (
+                <div key={index}>
+                  <a href={data.url} target="_blank">
+                    <GlareCard
+                      className="flex flex-row items-center justify-center gap-4"
+                      width="160px"
+                      height="60px"
+                    >
+                      <Image
+                        src={data.icon}
+                        alt={data.type}
+                        width={20}
+                        height={20}
+                      />
+                      <p className=" text-white font-semibold text-md">
+                        {data.type}
+                      </p>
+                    </GlareCard>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* PROGRAMMING LANGUAGE */}
 
         <div className="flex flex-col justify-between">
@@ -75,17 +123,17 @@ const Portofolio = () => {
             </h2>
           </div>
           <div className="flex flex-row items-center justify-between">
-            <div className="max-w-5xl mx-auto">
-              <HoverEffect items={proggramingLanguage} />
+            <div className="w-full">
+              <HoverEffect items={proggramingLanguage} className="mt-6" />
             </div>
           </div>
         </div>
 
-        {/* PROJECT */}
+        {/* PROJECT PORTOFOLIO */}
 
         <div className="flex flex-col justify-between">
           <div className="flex flex-row items-center justify-between">
-            <h2 className="text-2xl font-semibold">Project</h2>
+            <h2 className="text-2xl font-semibold">Portofolio</h2>
             <div className="flex flex-row items-center justify-between">
               <p
                 onClick={() => {
@@ -109,12 +157,11 @@ const Portofolio = () => {
                 onClick={() => {
                   router.push(`/project/${project.id}`);
                 }}
+                className="mt-6"
               />
             ))}
           </div>
         </div>
-
-        
       </div>
     </>
   );
