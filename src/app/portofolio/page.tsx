@@ -21,15 +21,20 @@ import PreviewProjects from "@/data/PreviewProjects";
 import { HeroParallax } from "@/components/ui/herro-parallax";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { TypewriterEffectSmooth } from "@/components/ui/typewritter-effect";
+import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
+import PlaceholdersSender from "@/data/PlaceholdersSender";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const Portofolio = () => {
   const aboutMe: typeof AboutMe = AboutMe;
   const projects: typeof Projects = Projects;
   const socialMedia: typeof SocialMedia = SocialMedia;
   const previewProjects: typeof PreviewProjects = PreviewProjects;
+  const proggramingLanguage: typeof ProgrammingLanguage = ProgrammingLanguage;
+  const placeholdersSender: typeof PlaceholdersSender = PlaceholdersSender;
   const router = useRouter();
-  const proggramingLanguage = ProgrammingLanguage;
   const title = useState<string[]>(aboutMe.title);
+  const [sender, setSender] = useState<string>("");
 
   const name = aboutMe.name
     .split(" ")
@@ -52,14 +57,40 @@ const Portofolio = () => {
     }
   };
 
+  const handleChangeSender = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSender(e.target.value);
+  };
+
+  const onSubmitSenderEmail = () => {
+    if (sender === "") {
+      alert("Please enter your name");
+      return;
+    }
+    window.open(
+      `mailto:${aboutMe.email}?subject=Hello from ${sender}&body=Hello, I am interested in working with you.`
+    );
+  };
+
+  const onSubmitSenderWhatsapp = () => {
+    if (sender === "") {
+      alert("Please enter your name");
+      return;
+    }
+    window.open(
+      `${aboutMe.whatsapp}?text=Hello from ${sender}, I am interested in working with you.`
+    );
+  };
+
   return (
     <>
       <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-full my-12">
+        <BackgroundBeams/>
+          <Spotlight
+            className="absolute top-0 left-0 right-0 z-10"
+            fill="white"
+          />
+
         {/* About Me */}
-        <Spotlight
-          className="-top-40 left-0 md:left-60 md:-top-20"
-          fill="white"
-        />
         <div className="flex flex-col justify-between md:items-start gap-5">
           <div className="flex md:flex-row md:items-center gap-10 flex-col md:self-center">
             <div className="flex justify-center mt-8">
@@ -164,32 +195,67 @@ const Portofolio = () => {
         {/* CONTACT ME */}
 
         <div className="flex md:flex-row flex-col justify-between gap-4">
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-col items-center justify-between gap-4">
             <h2 className="md:text-6xl text-4xl font-bold">
               Get To Work With Me
             </h2>
+            <div className="flex flex-col w-full gap-4">
+              <PlaceholdersAndVanishInput
+                placeholders={placeholdersSender}
+                onChange={handleChangeSender}
+                onSubmit={onSubmitSenderEmail}
+              />
+              <div className="flex flex-row items-start gap-4">
+              <div onClick={() => onSubmitSenderWhatsapp()}>
+                <GlareCard
+                  className="flex flex-row items-center justify-center gap-4"
+                  width="60px"
+                  height="60px"
+                >
+                  <Image
+                    src="/icons/whatsapp.png"
+                    alt="Whatsapp"
+                    width={30}
+                    height={30}
+                  />
+                </GlareCard>
+              </div>
+              <div onClick={() => onSubmitSenderEmail()}>
+                <GlareCard
+                  className="flex flex-row items-center justify-center gap-4"
+                  width="60px"
+                  height="60px"
+                >
+                  <Image
+                    src="/icons/email.png"
+                    alt="Email"
+                    width={30}
+                    height={30}
+                  />
+                </GlareCard>
+              </div>
+
+              </div>
+            </div>
           </div>
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-col justify-between gap-4">
-              <div>
-                <a
-                  href={aboutMe.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="md:text-2xl text-xl md:text-right"
-                >
-                  <p>{aboutMe.phone}</p>
-                </a>
+              <div
+                onClick={() => onSubmitSenderWhatsapp()}
+                className="md:text-2xl text-xl md:text-right"
+              >
+                <p>{aboutMe.phone}</p>
+
                 <p
                   className="md:text-2xl text-xl md:text-right"
-                  onClick={() => window.open(`mailto:${aboutMe.email}`)}
+                  onClick={() => onSubmitSenderEmail()}
                 >
                   {aboutMe.email}
                 </p>
               </div>
               <p className="md:text-2xl text-xl md:text-right">
                 Let's turn your vision into reality. Reach out today and let's
-                create something remarkable together
+                create something remarkable together.
               </p>
             </div>
           </div>
