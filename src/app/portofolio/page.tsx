@@ -16,11 +16,16 @@ import { useEffect, useState } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import { GlareCard } from "@/components/ui/glare-card";
 import SocialMedia from "@/data/SocialMedia";
+import { LinkPreview } from "@/components/ui/link-preview";
+import PreviewProjects from "@/data/PreviewProjects";
+import { HeroParallax } from "@/components/ui/herro-parallax";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 
 const Portofolio = () => {
   const aboutMe: typeof AboutMe = AboutMe;
   const projects: typeof Projects = Projects;
   const socialMedia: typeof SocialMedia = SocialMedia;
+  const previewProjects: typeof PreviewProjects = PreviewProjects;
   const router = useRouter();
   const proggramingLanguage = ProgrammingLanguage;
   const title = useState<string[]>(aboutMe.title);
@@ -44,7 +49,7 @@ const Portofolio = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-screen">
+      <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-full my-12">
         {/* About Me */}
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
@@ -89,43 +94,16 @@ const Portofolio = () => {
 
           <div className="flex flex-row items-center justify-between">
             <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-4 mt-6 max-w-6xl">
-              {socialMedia.map((data, index) => (
-                <div key={index}>
-                  <a href={data.url} target="_blank">
-                    <GlareCard
-                      className="flex flex-row items-center justify-center gap-4"
-                      width="160px"
-                      height="60px"
-                    >
-                      <Image
-                        src={data.icon}
-                        alt={data.type}
-                        width={20}
-                        height={20}
-                      />
-                      <p className=" text-white font-semibold text-md">
-                        {data.type}
-                      </p>
-                    </GlareCard>
-                  </a>
-                </div>
-              ))}
+              <AnimatedTooltip items={socialMedia} />
             </div>
           </div>
         </div>
 
-        {/* PROGRAMMING LANGUAGE */}
+        {/* PREVIEW PROJECTS */}
 
         <div className="flex flex-col justify-between">
-          <div className="flex flex-row items-center justify-between">
-            <h2 className="text-2xl font-semibold">
-              Programming Language & Framework
-            </h2>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <div className="w-full">
-              <HoverEffect items={proggramingLanguage} className="mt-6" />
-            </div>
+          <div className="w-full">
+            <HeroParallax products={previewProjects} />
           </div>
         </div>
 
@@ -155,11 +133,60 @@ const Portofolio = () => {
                 date={project.date}
                 images={project.images}
                 onClick={() => {
-                  router.push(`/project/${project.id}`);
+                  router.push(`/project/${project.id}?name=${project.name}`);
                 }}
                 className="mt-6"
               />
             ))}
+          </div>
+        </div>
+
+        {/* PROGRAMMING LANGUAGE */}
+
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-row items-center justify-between">
+            <h2 className="text-2xl font-semibold">
+              Programming Language & Framework
+            </h2>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <div className="w-full">
+              <HoverEffect items={proggramingLanguage} className="mt-6" />
+            </div>
+          </div>
+        </div>
+
+        {/* CONTACT ME */}
+
+        <div className="flex md:flex-row flex-col justify-between gap-4">
+          <div className="flex flex-row items-center justify-between">
+            <h2 className="md:text-6xl text-4xl font-bold">
+              Get To Work With Me
+            </h2>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-col justify-between gap-4">
+              <div>
+                <a
+                  href={aboutMe.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="md:text-2xl text-xl md:text-right"
+                >
+                  <p>{aboutMe.phone}</p>
+                </a>
+                <p
+                  className="md:text-2xl text-xl md:text-right"
+                  onClick={() => window.open(`mailto:${aboutMe.email}`)}
+                >
+                  {aboutMe.email}
+                </p>
+              </div>
+              <p className="md:text-2xl text-xl md:text-right">
+                Let's turn your vision into reality. Reach out today and let's
+                create something remarkable together
+              </p>
+            </div>
           </div>
         </div>
       </div>
