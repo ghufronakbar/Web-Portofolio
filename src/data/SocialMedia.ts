@@ -13,7 +13,7 @@ const SocialMedia = [
     },
     {
         id:3,
-        type: "Linkedin",
+        type: "LinkedIn",
         icon: "/icons/linkedin.png",
         url: "https://linkedin.com/in/ghufronakbar"
     },

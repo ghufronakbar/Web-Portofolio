@@ -20,6 +20,7 @@ import { LinkPreview } from "@/components/ui/link-preview";
 import PreviewProjects from "@/data/PreviewProjects";
 import { HeroParallax } from "@/components/ui/herro-parallax";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { TypewriterEffectSmooth } from "@/components/ui/typewritter-effect";
 
 const Portofolio = () => {
   const aboutMe: typeof AboutMe = AboutMe;
@@ -29,6 +30,10 @@ const Portofolio = () => {
   const router = useRouter();
   const proggramingLanguage = ProgrammingLanguage;
   const title = useState<string[]>(aboutMe.title);
+
+  const name = aboutMe.name
+    .split(" ")
+    .map((text) => ({ text: text, className: "text-4xl font-bold" }));
 
   const downloadCV = async () => {
     try {
@@ -68,9 +73,9 @@ const Portofolio = () => {
                 />
               </div>
             </div>
-            <div>
+            <div className="flex flex-col -gap-4">
               <h1 className="text-4xl font-bold mt-4">Hi! I'm</h1>
-              <h1 className="text-4xl font-bold">{aboutMe.name}</h1>
+              <TypewriterEffectSmooth words={name} />
               <h1 className="text-1xl font-semibold">
                 <FlipWords words={title[0]} />
               </h1>
