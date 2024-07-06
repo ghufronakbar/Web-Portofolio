@@ -3,9 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export function PlaceholdersAndVanishInput({
+export function PlaceholdersAndVanishInputSearch({
   placeholders,
   onChange,
   onSubmit,
@@ -32,6 +32,7 @@ export function PlaceholdersAndVanishInput({
     }
   };
 
+
   useEffect(() => {
     startAnimation();
     document.addEventListener("visibilitychange", handleVisibilityChange);
@@ -44,14 +45,23 @@ export function PlaceholdersAndVanishInput({
     };
   }, [placeholders]);
 
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
   const [animating, setAnimating] = useState(false);
 
+  const [search, setSearch] = useState<string>(
+    searchParams.get("search") || ""
+  );
 
+  // useEffect(()=>{    
+  //   router.push(`/project?search=${search}`);
+  // },[value])
 
+  
   const draw = useCallback(() => {
     if (!inputRef.current) return;
     const canvas = canvasRef.current;
@@ -176,12 +186,20 @@ export function PlaceholdersAndVanishInput({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     vanishAndSubmit();
-    onSubmit && onSubmit(e);
+    router.push(`/project?search=${value}`);
+    // onSubmit && onSubmit(e);
   };
+
+  useEffect(() => {
+    const search = searchParams.get("search");    
+    setValue(search || "");
+  },[])
+
+  
   return (
     <form
       className={cn(
-        "w-full relative max-w-xl mx-auto bg-white dark:bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+        "w-full relative max-w-xl  bg-white dark:bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end",
         value && "bg-gray-50"
       )}
       onSubmit={handleSubmit}
@@ -194,10 +212,11 @@ export function PlaceholdersAndVanishInput({
         ref={canvasRef}
       />
       <input
-        onChange={(e) => {
+        onChange={(e) => {          
           if (!animating) {
-            setValue(e.target.value);
-            onChange && onChange(e);
+            setValue(e.target.value);            
+            // onChange && onChange(e);
+            router.push(`/project?search=${e.target.value}`);
           }
         }}
         onKeyDown={handleKeyDown}

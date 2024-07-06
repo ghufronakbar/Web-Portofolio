@@ -84,7 +84,7 @@ const Portofolio = () => {
   return (
     <>
       <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-full my-12">
-        <BackgroundBeams/>
+        {/* <BackgroundBeams/> */}
           <Spotlight
             className="absolute top-0 left-0 right-0 z-10"
             fill="white"
@@ -146,7 +146,7 @@ const Portofolio = () => {
         {/* PROJECT PORTOFOLIO */}
 
         <div className="flex flex-col justify-between">
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center justify-between mb-8">
             <h2 className="text-2xl font-semibold">Portofolio</h2>
             <div className="flex flex-row items-center justify-between">
               <p
@@ -159,7 +159,7 @@ const Portofolio = () => {
               <BiChevronRight />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-6 no-margin-xy">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
             {projects.slice(0, 3).map((project, index) => (
               <CardProject
                 key={project.id}
@@ -171,7 +171,7 @@ const Portofolio = () => {
                 onClick={() => {
                   router.push(`/project/${project.id}?name=${project.name}`);
                 }}
-                className="mt-6"
+                className=""
               />
             ))}
           </div>

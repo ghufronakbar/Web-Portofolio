@@ -37,6 +37,13 @@ export const metadata: Metadata = {
   authors: [
     { name: "Lans The Prodigy", url: "https://lanstheprodigy.vercel.app" },
   ],
+  creator: "Lans The Prodigy",
+  publisher: "Lans The Prodigy",
+  colorScheme: "dark",
+  icons: {
+    icon: "/images/letter-l.png",
+    shortcut: "/images/letter-l.png",
+  },  
   themeColor: "#ffffff",
   openGraph: {
     title: "Lans The Prodigy | Ghufron Akbar",
