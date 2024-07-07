@@ -5,9 +5,8 @@ import { AnimatedTooltipTool } from "@/components/ui/animated-tooltip-tool";
 import Projects from "@/data/Projects";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useState } from "react";
-import ShowImage from "@/components/detail/ShowImage"
-import { IoIosCloseCircle } from "react-icons/io";
+import { Suspense, useState } from "react";
+import ShowImage from "@/components/detail/ShowImage";
 
 const ProjectID = () => {
   const params = useParams();
@@ -100,6 +99,10 @@ const ProjectID = () => {
   );
 };
 
+const ProjectIDWithSuspense = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ProjectID />
+  </Suspense>
+);
 
-
-export default ProjectID;
+export default ProjectIDWithSuspense;

@@ -10,8 +10,7 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lans The Prodigy | Ghufron Akbar",
-  viewport: "width=device-width, initial-scale=1.0",
+  title: "Lans The Prodigy | Ghufron Akbar",  
   description: "Ghufron Akbar Portofolio",
   keywords: [
     "Lans The Prodigy",
@@ -40,13 +39,11 @@ export const metadata: Metadata = {
     { name: "Lans The Prodigy", url: "https://lanstheprodigy.vercel.app" },
   ],
   creator: "Lans The Prodigy",
-  publisher: "Lans The Prodigy",
-  colorScheme: "dark",
+  publisher: "Lans The Prodigy",  
   icons: {
     icon: "/images/letter-l.png",
     shortcut: "/images/letter-l.png",
-  },
-  themeColor: "#ffffff",
+  },  
   openGraph: {
     title: "Lans The Prodigy | Ghufron Akbar",
     description: "Software Engineer",
@@ -90,7 +87,7 @@ const RootLayout = ({
         <body className={inter.className}>
           <FloatingNav navItems={navItems} />
           <TracingBeam className="px-6">
-            {/* <BackgroundBeams /> */}
+            <BackgroundBeams />
             <Spotlight
               className="absolute h-full w-full transition-all duration-300 ease-in-out"
               fill="white"

@@ -1,12 +1,11 @@
 "use client";
 
 import CardProject from "@/components/card/CardProject";
-import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { PlaceholdersAndVanishInputSearch } from "@/components/ui/placeholders-and-vanish-input-search";
 import PlaceholdersSearch from "@/data/PlaceholdersSearch";
 import Projects from "@/data/Projects";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const Project = () => {
   const projects = Projects;
@@ -21,23 +20,22 @@ const Project = () => {
     setSearch(searchParams.get("search") || "");
   }, [searchParams]);
 
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
 
   const onSubmitSearch = () => {
     router.push(`/project?search=${search}`);
   };
 
   const searchProjectsByKeyword = (keyword: string): any[] => {
-    // Lakukan filtering berdasarkan kata kunci
     const filteredProjects = Projects.filter((project) => {
-      // Periksa apakah properti keywords ada dan bukan undefined
       if (project.keywords && Array.isArray(project.keywords)) {
-        // Periksa apakah kata kunci ada di dalam keywords proyek
         return project.keywords.some((kw) =>
           kw.toLowerCase().includes(keyword.toLowerCase())
         );
       }
-      return false; // Jika keywords tidak ada atau tidak valid, maka filter akan mengembalikan false
+      return false;
     });
 
     return filteredProjects;
@@ -58,15 +56,15 @@ const Project = () => {
         </div>
         {search.length > 0 && filteredProjects.length > 0 ? (
           <h1 className="relative text-l font-normal -my-2">
-            Showing all results with keyword "{search}"
+            Showing all results with keyword &quot;{search}&quot;
           </h1>
         ) : search.length === 0 && filteredProjects.length > 0 ? (
           <h1 className=" text-l font-normal -my-2">Showing all projects</h1>
-        ) : filteredProjects.length === 0? (
-            <h1 className="text-l font-normal -my-2">
-            Sorry, there's no results with keyword "{search}" :(
+        ) : filteredProjects.length === 0 ? (
+          <h1 className="text-l font-normal -my-2">
+            Sorry, there&apos;s no results with keyword &quot;{search}&quot; :(
           </h1>
-        ):null}
+        ) : null}
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
           {filteredProjects.map((project) => (
@@ -87,10 +85,16 @@ const Project = () => {
               className="max-w-full"
             />
           ))}
-        </div>       
+        </div>
       </div>
     </>
   );
 };
 
-export default Project;
+const ProjectWithSuspense = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Project />
+  </Suspense>
+);
+
+export default ProjectWithSuspense;

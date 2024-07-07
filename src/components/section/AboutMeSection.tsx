@@ -44,7 +44,7 @@ const AboutMeSection = () => {
           </div>
         </div>
         <div className="flex flex-col -gap-4">
-          <h1 className="text-4xl font-bold mt-4">Hi! I'm</h1>
+          <h1 className="text-4xl font-bold mt-4">Hi! I&apos;m</h1>
           <TypewriterEffectSmooth words={name} />
           <h1 className="text-1xl font-semibold">
             <FlipWords words={title[0]} />

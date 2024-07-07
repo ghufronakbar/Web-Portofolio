@@ -12,7 +12,7 @@ const ErrorPage = () => {
         <div className="flex flex-row gap-4 items-center">
           <div className="text-2xl font-bold">500</div>
           <div>|</div>
-          <div className="text-2xl font-normal">There's some mistakes :(</div>
+          <div className="text-2xl font-normal">There&apos;s some mistakes :(</div>
         </div>
         <div className="flex flex-row gap-1 items-center">
           <div className="text-l font-normal">Return to</div>

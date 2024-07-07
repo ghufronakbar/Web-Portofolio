@@ -92,7 +92,7 @@ const ContactSection = () => {
               </p>
             </div>
             <p className="md:text-2xl text-xl md:text-right">
-              Let's turn your vision into reality. Reach out today and let's
+              Let&apos;s turn your vision into reality. Reach out today and let&apos;s
               create something remarkable together.
             </p>
           </div>
