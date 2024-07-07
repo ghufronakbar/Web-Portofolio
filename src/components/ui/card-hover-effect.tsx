@@ -1,6 +1,7 @@
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -16,11 +17,11 @@ export const HoverEffect = ({
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+  const router = useRouter()
   return (
     <div
       className={cn(
-        "grid grid-cols-2 md:grid-cols-2  lg:grid-cols-8 ",
+        "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8",
         className
       )}
     >
@@ -30,6 +31,7 @@ export const HoverEffect = ({
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onClick={()=>{router.push(`/project?search=${item.name}`)}}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (

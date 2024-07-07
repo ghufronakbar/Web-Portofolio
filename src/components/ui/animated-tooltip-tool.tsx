@@ -10,13 +10,12 @@ import {
 } from "framer-motion";
 import { GlareCard } from "./glare-card";
 
-export const AnimatedTooltip = ({
+export const AnimatedTooltipTool = ({
   items,
 }: {
   items: {
     id: number;
-    type: string;
-    url: string;
+    name: string;    
     icon: string;
   }[];
 }) => {
@@ -42,13 +41,12 @@ export const AnimatedTooltip = ({
     <>
       {items.map((item, idx) => (
         <div
-          className="relative  flex flex-row items-center justify-center gap-4"
-          key={item.type}
+          className="relative flex flex-row items-center justify-center gap-4"
+          key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
-          onClick={() => window.open(item.url, "_blank")}
         >
-          <AnimatePresence mode="popLayout">
+          {/* <AnimatePresence mode="popLayout">
             {hoveredIndex === item.id && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
@@ -73,24 +71,21 @@ export const AnimatedTooltip = ({
                 <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
                 <div className="font-bold text-white relative z-30 text-base">
-                  {item.type}
+                  {item.name}
                 </div>
-                <div className="text-white text-xs">{item.url}</div>
+                <div className="text-white text-xs">{item.name}</div>
               </motion.div>
             )}
-          </AnimatePresence>
-
+          </AnimatePresence> */}
+          
           <div onMouseMove={handleMouseMove}>
             <GlareCard
-              className="flex flex-row items-center justify-center gap-4 px-4"
+              className="flex flex-row items-center justify-center gap-4"
               width="160px"
               height="60px"
             >
-              <Image src={item.icon} alt={item.type} width={20} height={20} />
-
-              <p className=" text-white font-semibold text-md truncate">
-                {item.type}
-              </p>
+              <Image src={item.icon} alt={item.name} width={20} height={20} />
+              <p className=" text-white font-semibold text-md">{item.name}</p>
             </GlareCard>
           </div>
         </div>

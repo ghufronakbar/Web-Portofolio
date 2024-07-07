@@ -56,6 +56,18 @@ const Project = () => {
             onSubmit={onSubmitSearch}
           />
         </div>
+        {search.length > 0 && filteredProjects.length > 0 ? (
+          <h1 className="relative text-l font-normal -my-2">
+            Showing all results with keyword "{search}"
+          </h1>
+        ) : search.length === 0 && filteredProjects.length > 0 ? (
+          <h1 className=" text-l font-normal -my-2">Showing all projects</h1>
+        ) : filteredProjects.length === 0? (
+            <h1 className="text-l font-normal -my-2">
+            Sorry, there's no results with keyword "{search}" :(
+          </h1>
+        ):null}
+
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
           {filteredProjects.map((project) => (
             <CardProject
@@ -75,11 +87,7 @@ const Project = () => {
               className="max-w-full"
             />
           ))}
-
-        </div>
-          {filteredProjects.length === 0 && (
-            <h1 className="mx-auto text-l font-normal">Sorry, there's no results with keyword "{search}" :(</h1>
-          )}
+        </div>       
       </div>
     </>
   );

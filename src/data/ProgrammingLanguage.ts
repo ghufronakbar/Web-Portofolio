@@ -19,7 +19,7 @@ const ProgrammingLanguage = [
   },
   {
     id: 6,
-    name: "React",
+    name: "ReactJS",
     image: "/images/programming-language/react.png",
     percentage: 70,
   },

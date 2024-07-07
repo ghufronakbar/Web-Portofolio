@@ -4,6 +4,8 @@ import "./globals.css";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import NavItems from "@/data/NavItems";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { Spotlight } from "@/components/ui/spotlight";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/letter-l.png",
     shortcut: "/images/letter-l.png",
-  },  
+  },
   themeColor: "#ffffff",
   openGraph: {
     title: "Lans The Prodigy | Ghufron Akbar",
@@ -83,15 +85,22 @@ const RootLayout = ({
     <>
       <html lang="en">
         <head>
-        <link rel="icon" href="/images/letter-l.png" sizes="any" />
+          <link rel="icon" href="/images/letter-l.png" sizes="any" />
         </head>
         <body className={inter.className}>
           <FloatingNav navItems={navItems} />
-          <TracingBeam className="px-6">{children}</TracingBeam>
+          <TracingBeam className="px-6">
+            {/* <BackgroundBeams /> */}
+            <Spotlight
+              className="absolute h-full w-full transition-all duration-300 ease-in-out"
+              fill="white"
+            />
+            {children}
+          </TracingBeam>
         </body>
       </html>
     </>
   );
-}
+};
 
-export default RootLayout
+export default RootLayout;
