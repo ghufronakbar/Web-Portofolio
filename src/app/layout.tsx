@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Lans The Prodigy",
     images: [
       {
-        url: "https://lans-the-prodigy.vercel.app/api/og",
+        url: "https://lanstheprodigy.vercel.app/api/og",
         width: 1200,
         height: 630,
       },
