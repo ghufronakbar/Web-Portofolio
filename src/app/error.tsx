@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex flex-col items-center gap-4">
-        <Image src="/images/404.png" alt="500" width={600} height={600} />
+        <Image src="/images/500.png" alt="500" width={600} height={600} />
         <div className="flex flex-row gap-4 items-center">
           <div className="text-2xl font-bold">500</div>
           <div>|</div>

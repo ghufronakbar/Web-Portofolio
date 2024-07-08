@@ -51,6 +51,7 @@ export function PlaceholdersAndVanishInputSearch({
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
+  const [type, setType] = useState<string>(searchParams.get("type") || "");
   const [animating, setAnimating] = useState(false);
 
   const [search, setSearch] = useState<string>(
@@ -186,14 +187,16 @@ export function PlaceholdersAndVanishInputSearch({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     vanishAndSubmit();
-    router.push(`/project?search=${value}`);
+    router.push(`/project?search=${value}&type=${type}`);
     // onSubmit && onSubmit(e);
   };
 
   useEffect(() => {
     const search = searchParams.get("search");    
+    const type = searchParams.get("type");
+    setType(type || "");
     setValue(search || "");
-  },[])
+  },[searchParams])
 
   
   return (
@@ -216,7 +219,7 @@ export function PlaceholdersAndVanishInputSearch({
           if (!animating) {
             setValue(e.target.value);            
             // onChange && onChange(e);
-            router.push(`/project?search=${e.target.value}`);
+            router.push(`/project?search=${e.target.value}&type=${type}`);
           }
         }}
         onKeyDown={handleKeyDown}

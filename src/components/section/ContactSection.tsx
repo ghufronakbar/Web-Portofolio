@@ -16,7 +16,15 @@ const ContactSection = () => {
   
     const onSubmitSenderEmail = () => {
       if (sender === "") {
-        alert("Please enter your name");
+        const alertElement = document.createElement("div");
+        alertElement.textContent = "Please enter your name";        
+        alertElement.classList.add("fixed", "inset-0", "z-50", "flex", "justify-center", "items-center");
+        alertElement.classList.add("bg-black", "bg-opacity-50");
+        alertElement.classList.add("mx-6");        
+        document.body.appendChild(alertElement);
+        setTimeout(() => {
+          alertElement.remove();
+        }, 2000);
         return;
       }
       window.open(
@@ -26,7 +34,15 @@ const ContactSection = () => {
   
     const onSubmitSenderWhatsapp = () => {
       if (sender === "") {
-        alert("Please enter your name");
+        const alertElement = document.createElement("div");
+        alertElement.textContent = "Please enter your name";        
+        alertElement.classList.add("fixed", "inset-0", "z-50", "flex", "justify-center", "items-center");
+        alertElement.classList.add("bg-black", "bg-opacity-50");
+        alertElement.classList.add("mx-6");        
+        document.body.appendChild(alertElement);
+        setTimeout(() => {
+          alertElement.remove();
+        }, 2000);
         return;
       }
       window.open(
