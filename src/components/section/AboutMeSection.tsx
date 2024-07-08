@@ -53,7 +53,7 @@ const AboutMeSection = () => {
       </div>
       <div className="mt-4">{AboutMe.description} </div>
       <button
-        className="bg-blue-500 hover:bg-black hover:text-blue-500 text-white font-bold py-2 px-4 rounded mt-4 outline outline-2 outline-blue-500 transition-all duration-300 self-start"
+        className="relative bg-blue-500 hover:bg-black hover:text-blue-500 text-white font-bold py-2 px-4 rounded mt-4 outline outline-2 outline-blue-500 transition-all duration-300 self-start"
         onClick={() => downloadCV()}
       >
         Download CV
