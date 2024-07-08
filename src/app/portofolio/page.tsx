@@ -11,7 +11,7 @@ const Portofolio = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between md:px-24 px-6 gap-10 w-full my-12">
+      <div className="flex flex-col justify-between md:px-24  gap-10 w-full my-12">
         {/* About Me */}
         <AboutMeSection />
 

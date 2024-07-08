@@ -17,7 +17,7 @@ const Project = () => {
   );
   const [type, setType] = useState<string>(searchParams.get("type") || "");
   const allTypes = Projects.flatMap((item) => item.types);
-  const uniqueTypes = Array.from(new Set(allTypes));
+  const uniqueTypes = Array.from(new Set(allTypes));  
 
   useEffect(() => {
     setSearch(searchParams.get("search") || "");
@@ -67,9 +67,13 @@ const Project = () => {
     router.push(`/project?search=${search}&type=${e.target.value}`);
   };
 
+  useEffect(()=>{
+
+  },[])
+
   return (
     <>
-      <div className="flex flex-col justify-between md:px-24 px-6 gap-12 w-full my-12">
+      <div className="flex flex-col justify-between md:px-24 gap-12 w-full my-12">
         <div className="flex flex-col md:flex-row items-center gap-6 justify-between">
           <h1 className="text-4xl font-bold">Projects / Portofolio</h1>
           <div className="flex flex-col md:flex-col gap-4 items-center md:w-1/3 max-w-2xl w-full">
@@ -80,15 +84,16 @@ const Project = () => {
               className="flex w-full"
             />
             <select
+              value={type}
               className="w-full relative max-w-xl   bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left  truncate"
               onChange={handleOnChangeType}
             >
-              <option selected value="" className="">
+              <option selected={true} value="" className="">
                 Select Type
               </option>
               {uniqueTypes.map((type) => (
                 <option key={type} value={type} className="">
-                  {type}
+                  {" " +type}
                 </option>
               ))}
             </select>

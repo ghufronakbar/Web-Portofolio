@@ -19,7 +19,7 @@ const ProjectID = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col justify-between md:px-24 px-6 gap-6 w-full my-12">
+    <div className="flex flex-col justify-between md:px-24 gap-6 w-full my-12">
       <div className="flex flex-col md:flex-row items-center gap-6 justify-between text-4xl font-bold">
         {project?.name}
       </div>
@@ -57,38 +57,15 @@ const ProjectID = () => {
         </div>
 
         <div className="flex flex-col gap-4 w-full md:w-1/2">
-          
-
           <div>{project?.description}</div>
           <div>{project?.jobdesc}</div>
           <div className="text-xl font-semibold">Technology Used:</div>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl">
-            {project?.tools && (
-              <AnimatedTooltipTool
-                items={
-                  project?.tools as {
-                    id: number;
-                    name: string;
-                    icon: string;
-                  }[]
-                }
-              />
-            )}
+            {project?.tools && <AnimatedTooltipTool items={project?.tools} />}
           </div>
           <div className="text-xl font-semibold">Links:</div>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl">
-            {project?.links && (
-              <AnimatedTooltip
-                items={
-                  project?.links as {
-                    id: number;
-                    type: string;
-                    url: string;
-                    icon: string;
-                  }[]
-                }
-              />
-            )}
+            {project?.links && <AnimatedTooltip items={project?.links} />}
           </div>
         </div>
       </div>
@@ -102,7 +79,7 @@ const ProjectID = () => {
 };
 
 const ProjectIDWithSuspense = () => (
-  <Suspense fallback={<LoadingSkeleton/>}>
+  <Suspense fallback={<LoadingSkeleton />}>
     <ProjectID />
   </Suspense>
 );
