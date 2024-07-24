@@ -8,7 +8,7 @@ import {
   MotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const HeroParallax = ({
   products,
@@ -126,8 +126,7 @@ export const ProductCard = ({
     project_id: number;
   };
   translate: MotionValue<number>;
-}) => {
-  const router = useRouter()
+}) => {  
   return (
     <motion.div
       style={{
@@ -139,7 +138,8 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <div className="block group-hover/product:shadow-2xl" onClick={() => router.push(`/project/${product.project_id}?name=${product.title}`)}>
+      <Link href={`/project/${product.project_id}?name=${product.title}`} >
+      <div className="block group-hover/product:shadow-2xl">
         <Image
           src={product.thumbnail}
           height="600"
@@ -148,6 +148,7 @@ export const ProductCard = ({
           alt={product.title}
         />
       </div>
+      </Link>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}

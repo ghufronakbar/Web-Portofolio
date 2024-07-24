@@ -1,5 +1,4 @@
 "use client";
-;
 import ContactSection from "@/components/section/ContactSection";
 import AboutMeSection from "@/components/section/AboutMeSection";
 import SocialMediaSection from "@/components/section/SocialMediaSection";
@@ -7,8 +6,7 @@ import ProjectSection from "@/components/section/ProjectSection";
 import ProgrammingLanguageSection from "@/components/section/ProgrammingLanguageSection";
 import PreviewProjectsSection from "@/components/section/PreviewProjectsSection";
 
-const Portofolio = () => {  
-
+const Portofolio = () => {
   return (
     <>
       <div className="flex flex-col justify-between md:px-24  gap-10 w-full my-12">
@@ -33,7 +31,6 @@ const Portofolio = () => {
 
         {/* CONTACT ME */}
         <ContactSection />
-
       </div>
     </>
   );

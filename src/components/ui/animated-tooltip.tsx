@@ -9,6 +9,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { GlareCard } from "./glare-card";
+import Link from "next/link";
 
 export const AnimatedTooltip = ({
   items,
@@ -41,12 +42,12 @@ export const AnimatedTooltip = ({
   return (
     <>
       {items.map((item, idx) => (
+        <Link href={item.url} target="_blank" rel="noopener noreferrer" key={item.type} >        
         <div
           className="relative  flex flex-row items-center justify-center gap-4"
           key={item.type}
           onMouseEnter={() => setHoveredIndex(item.id)}
-          onMouseLeave={() => setHoveredIndex(null)}
-          onClick={() => window.open(item.url, "_blank")}
+          onMouseLeave={() => setHoveredIndex(null)}          
         >
           <AnimatePresence mode="popLayout">
             {hoveredIndex === item.id && (
@@ -94,6 +95,7 @@ export const AnimatedTooltip = ({
             </GlareCard>
           </div>
         </div>
+        </Link>
       ))}
     </>
   );
