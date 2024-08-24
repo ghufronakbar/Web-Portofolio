@@ -1,15 +1,15 @@
-export interface ToolsType  {
+export interface ToolsType {
   id: number;
   name: string;
   icon: string;
-};
+}
 
 export interface LinksType {
   id: number;
   type: string;
   url: string;
   icon: string;
-};
+}
 
 export type ProjectsType = {
   id: number;
@@ -166,7 +166,7 @@ const Projects: ProjectsType[] = [
       "/images/projects/di-desa/4.png",
       "/images/projects/di-desa/5.png",
       "/images/projects/di-desa/6.png",
-      "/images/projects/di-desa/7.png",      
+      "/images/projects/di-desa/7.png",
     ],
     links: [
       {
@@ -192,7 +192,7 @@ const Projects: ProjectsType[] = [
         type: "Website",
         url: "https://didesa.vercel.app",
         icon: "/icons/web.png",
-      }
+      },
     ],
     keywords: [
       "DiDesa - Digitalisasi Desa",
@@ -771,23 +771,24 @@ const Projects: ProjectsType[] = [
       },
       {
         id: 3,
-        name: "Vercel",
-        icon: "/images/logo/vercel.svg",
+        name: "Railway",
+        icon: "/images/logo/railway.svg",
+      },
+      {
+        id: 4,
+        name: "Socket.io",
+        icon: "/images/logo/socketio.png",
       },
     ],
     description:
       "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
-    jobdesc: "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
+    jobdesc:
+      "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
     images: [
       "/images/projects/check-khodam/1.png",
       "/images/projects/check-khodam/2.png",
       "/images/projects/check-khodam/3.png",
       "/images/projects/check-khodam/4.png",
-      "/images/projects/check-khodam/5.png",
-      "/images/projects/check-khodam/6.png",
-      "/images/projects/check-khodam/7.png",
-      "/images/projects/check-khodam/8.png",
-      "/images/projects/check-khodam/9.png",
     ],
     links: [
       {
@@ -812,6 +813,7 @@ const Projects: ProjectsType[] = [
       "React",
       "NextJS",
       "Socket.io",
+      "Web Socket",
     ],
   },
   {
@@ -850,6 +852,12 @@ const Projects: ProjectsType[] = [
         url: "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023",
         icon: "/icons/figma.png",
       },
+      {
+        id: 2,
+        type: "Award",
+        url: "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/",
+        icon: "/icons/linkedin.png",
+      },
     ],
     keywords: [
       "Berijalan",
@@ -860,7 +868,60 @@ const Projects: ProjectsType[] = [
       "UI Design",
       "UI/UX",
     ],
-  }, 
+  },
+  {
+    id: 11,
+    name: "Website Pengaduan Masyarakat",
+    slug: "pengaduan-masyarakat-purwodadi",
+    heading: "Public Complaint Website for Purwodadi Village Residents",
+    date: "2024-08-01",
+    types: ["Website", "Community Service", "Mini Project"],
+    tools: [
+      {
+        id: 1,
+        name: "PHP",
+        icon: "/images/logo/php.png",
+      },
+      {
+        id: 2,
+        name: "MySQL",
+        icon: "/images/logo/mysql.png",
+      },
+    ],
+    description:
+      "This is a website that handles public complaints for Purwodadi Sub-district. On this website there is a landing page that introduces the identity of the Kalurahan. The complaint feature is based on two-way communication with the administrators of the village, the results of which are displayed transparently. If you object to telling your identity you can anonymously send it.",
+    jobdesc:
+      "As my mini project as a community service, I made this website as a monolith website using PHP Native and MySQL. I also took care of server issues such as deploying, setting up domains and taking care of SSL and website legality due to sensitive information.",
+    images: [
+      "/images/projects/purwodadi/1.png",
+      "/images/projects/purwodadi/2.png",
+      "/images/projects/purwodadi/3.png",
+      "/images/projects/purwodadi/4.png",
+      "/images/projects/purwodadi/5.png",
+      "/images/projects/purwodadi/6.png",
+    ],
+    links: [
+      {
+        id: 1,
+        type: "Website",
+        url: "https://laporpurwodadi.site/",
+        icon: "/icons/web.png",
+      },
+      {
+        id: 2,
+        type: "Repository",
+        url: "https://github.com/ghufronakbar/WebsiteDesa",
+        icon: "/icons/github.png",
+      },
+    ],
+    keywords: [
+      "Website Pengaduan Masyarakat",
+      "Purwodadi",
+      "Complaint",
+      "PHP",
+      "MySQL",
+    ],
+  },
 ];
 
 export default Projects;

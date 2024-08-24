@@ -103,7 +103,7 @@ const ProjectPage = () => {
               className="w-full relative max-w-xl   bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left  truncate"
               onChange={handleOnChangeType}
             >
-              <option selected={true} value="" className="">
+              <option value="" className="">
                 Select Type
               </option>
               {uniqueTypes.map((type) => (

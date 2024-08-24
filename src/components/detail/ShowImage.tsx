@@ -14,6 +14,7 @@ const ShowImage = ({
       className={`fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 ${
         isShow ? "" : "hidden"
       }`}
+      onClick={onClose}
     >
       <div className="relative">
         <button
@@ -40,8 +41,7 @@ const ShowImage = ({
           alt={image}
           width={1000}
           height={1000}
-          style={{ objectFit: "contain", maxHeight: "90vh", maxWidth: "90vw" }}
-          onClick={onClose}
+          style={{ objectFit: "contain", maxHeight: "90vh", maxWidth: "90vw" }}          
         />
       </div>
     </div>

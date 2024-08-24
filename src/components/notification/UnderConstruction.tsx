@@ -18,8 +18,8 @@ const UnderConstruction = () => {
             <Image
               src="/images/under-construction.png"
               alt="404"
-              width={600}
-              height={600}
+              width={400}
+              height={400}
               className="w-1/2"
             />
             <div className="flex flex-row gap-2 md:gap-4 items-center">
