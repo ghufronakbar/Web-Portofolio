@@ -8,18 +8,17 @@ import {
 } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
+import { NavItemsType } from "@/data/NavItems";
+
+interface Props  {
+  navItems: NavItemsType[];
+  className?: string;
+}
 
 export const FloatingNav = ({
   navItems,
   className,
-}: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
-  className?: string;
-}) => {
+}: Props) => {
   const { scrollYProgress } = useScroll();
 
   const [visible, setVisible] = useState(false);
@@ -72,7 +71,6 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </Link>
         ))}
-        
       </motion.div>
     </AnimatePresence>
   );

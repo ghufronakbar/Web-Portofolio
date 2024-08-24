@@ -1,18 +1,19 @@
-type ToolsType = {
+export interface ToolsType  {
   id: number;
   name: string;
   icon: string;
 };
 
-type LinksType = {
+export interface LinksType {
   id: number;
   type: string;
   url: string;
   icon: string;
 };
 
-type ProjectsType = {
+export type ProjectsType = {
   id: number;
+  slug: string;
   name: string;
   heading: string;
   description: string;
@@ -28,13 +29,14 @@ type ProjectsType = {
 const Projects: ProjectsType[] = [
   {
     id: 1,
+    slug: "sampahmas-waste-management-system",
     name: "Sampahmas",
     heading: "Waste Management System",
     description:
       "Sampahmas is a waste management application that is integrated with a waste vending machine. We designed the application in an attractive and easy-to-use manner for various groups. We provide various features such as the location of the nearest machine, redeeming garbage to points so that points can be exchanged for various goods or vouchers in the mart menu and we provide daily tasks so that you are more eager to collect sampahmas points.",
     jobdesc:
       "I became the leader of software engineering of the development of a waste management application that is integrated with vending machines. Take a lead of technologies and active role in the development, launch and operational management of the Sampahmas app. This app provides an innovative solution for plastic waste management with vending machine integration. Coordinate the application development team and oversee the entire development cycle, from planning to launch.",
-    date: "November 2023",
+    date: "2023-11-01",
     types: ["Project", "Website", "Mobile App", "Design", "Team Project"],
     tools: [
       {
@@ -116,19 +118,20 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 2,
+    slug: "didesa-village-information-system",
     name: "DiDesa - Digitalisasi Desa",
     heading: "Village Information System",
     description:
       "DiDesa is an interactive application as a means of Village Information System to support its effectiveness in information media facilities. In this system there is information about the village, means of advertising UMKM, news for local residents, and village head elections.",
     jobdesc:
-      "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Flutter as a mobile application. As well as using PostgreSQL as a database. ",
-    date: "April 2024",
+      "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the website for client side. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and React Native as a mobile application. As well as using PostgreSQL as a database. ",
+    date: "2024-04-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
       {
         id: 1,
-        name: "Flutter",
-        icon: "/images/logo/flutter.png",
+        name: "React Native",
+        icon: "/images/logo/rn.png",
       },
       {
         id: 2,
@@ -153,33 +156,38 @@ const Projects: ProjectsType[] = [
     ],
     images: [
       "/images/projects/di-desa/1.png",
-      "/images/projects/di-desa/2.jpg",
-      "/images/projects/di-desa/3.jpg",
-      "/images/projects/di-desa/4.jpg",
-      "/images/projects/di-desa/5.jpg",
+      "/images/projects/di-desa/2.png",
+      "/images/projects/di-desa/3.png",
+      "/images/projects/di-desa/4.png",
+      "/images/projects/di-desa/5.png",
       "/images/projects/di-desa/6.png",
-      "/images/projects/di-desa/7.png",
-      "/images/projects/di-desa/8.png",
+      "/images/projects/di-desa/7.png",      
     ],
     links: [
       {
         id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/DiDesa-Mobile-Flutter",
+        type: "Mobile App Repository",
+        url: "https://github.com/ghufronakbar/DiDesa-Mobile-ReactNative",
         icon: "/icons/github.png",
       },
       {
         id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/DiDesa-Backend-ExpressJS",
+        type: "Web Server Repository",
+        url: "https://github.com/ghufronakbar/DiDesa-Backend-ExpressJS-Remake",
         icon: "/icons/github.png",
       },
       {
         id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/DiDesa-DashboardAdmin-NextJS",
+        type: "Website Repository",
+        url: "https://github.com/ghufronakbar/DiDesa-Website-NextJS",
         icon: "/icons/github.png",
       },
+      {
+        id: 4,
+        type: "Website",
+        url: "https://didesa.vercel.app",
+        icon: "/icons/web.png",
+      }
     ],
     keywords: [
       "DiDesa - Digitalisasi Desa",
@@ -191,18 +199,19 @@ const Projects: ProjectsType[] = [
       "PostgreSQL",
       "React",
       "NextJS",
-      "Flutter",
+      "React Native",
     ],
   },
   {
     id: 3,
+    slug: "lestari-wildlife-data-collection-application",
     name: "Lestari",
     heading: "Wildlife Data Collection Application",
     description:
       "Lestari is an application for wildlife data collection. In this application only authorized users can collect data. The wildlife data collected in this application is confidential but can be obtained with the approval of the authorized party.",
     jobdesc:
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Flutter as a mobile application. As well as using PostgreSQL as a database.",
-    date: "March 2024",
+    date: "2024-03-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
       {
@@ -304,6 +313,7 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 4,
+    slug: "event-ease-ticket-purchase-system",
     name: "Event Ease",
     heading: "Information System For Ticket Purchases",
     types: ["Project", "Website", "Mobile App"],
@@ -311,7 +321,7 @@ const Projects: ProjectsType[] = [
       "It is a ticket booking system held by an organization. The organization requires approval from the admin regarding the account created and the event being held. Users can purchase tickets with existing stock. ",
     jobdesc:
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Kotlin as a native Android application. As well as using MySQL as a database.",
-    date: "June 2024",
+    date: "2024-06-01",
     tools: [
       {
         id: 1,
@@ -395,9 +405,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 5,
+    slug: "supersos-emergency-call-system",
     name: "SuperSOS",
     heading: "Emergency Call / SOS System",
-    date: "April 2024",
+    date: "2024-04-01",
     tools: [
       {
         id: 1,
@@ -487,9 +498,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 6,
+    slug: "coffee-ordering-system",
     name: "Goffee",
     heading: "Coffee Ordering System",
-    date: "May 2024",
+    date: "2024-05-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
       {
@@ -573,9 +585,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 7,
+    slug: "radin-grocery-ordering-system",
     name: "Radin",
     heading: "Grocery Ordering System",
-    date: "May 2024",
+    date: "2024-05-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
       {
@@ -658,9 +671,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 8,
+    slug: "ice-production-calculation-system",
     name: "Fuzzy Tsukamoto Calculation",
     heading: "Ice Production Calculation System",
-    date: "May 2024",
+    date: "2024-05-01",
     types: ["Mini Project", "Website"],
     tools: [
       {
@@ -733,9 +747,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 9,
+    slug: "check-your-khodam",
     name: "Check Your Khodam",
     heading: "Information System Analyzing the Djinn",
-    date: "July 2024",
+    date: "2024-07-01",
     types: ["Mini Project", "Website", "Public"],
     tools: [
       {
@@ -755,7 +770,7 @@ const Projects: ProjectsType[] = [
       },
     ],
     description:
-      "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend (Monolite Website). Using Web Socket to ensure realtime data fetching.",
+      "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
     jobdesc: "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
     images: [
       "/images/projects/check-khodam/1.png",
@@ -778,8 +793,8 @@ const Projects: ProjectsType[] = [
       {
         id: 2,
         type: "Deployed Website",
-        url: "https://check-khodam-online-flax.vercel.app/",
-        icon: "/icons/github.png",
+        url: "https://cek-khodam-online.up.railway.app/",
+        icon: "/icons/web.png",
       },
     ],
     keywords: [
@@ -795,9 +810,10 @@ const Projects: ProjectsType[] = [
   },
   {
     id: 10,
+    slug: "berijalan-redesign-user-interfaces",
     name: "Berijalan Redesign",
     heading: "Redesign of Berijalan Website",
-    date: "July 2024",
+    date: "2024-07-01",
     types: ["Design"],
     tools: [
       {

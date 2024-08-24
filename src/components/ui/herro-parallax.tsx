@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   motion,
   useScroll,
@@ -9,15 +9,13 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { PreviewProjectsType } from "@/data/PreviewProjects";
+import PlaceHolderImage from "@/data/PlaceholderImage";
 
 export const HeroParallax = ({
   products,
 }: {
-  products: {
-    title: string;
-    thumbnail: string;
-    project_id: number;
-  }[];
+  products: PreviewProjectsType[];
 }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
@@ -120,13 +118,10 @@ export const ProductCard = ({
   product,
   translate,
 }: {
-  product: {
-    title: string;
-    thumbnail: string;
-    project_id: number;
-  };
+  product: PreviewProjectsType;
   translate: MotionValue<number>;
 }) => {  
+  const [image, setImage] = useState(product.thumbnail);
   return (
     <motion.div
       style={{
@@ -138,17 +133,18 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link href={`/project/${product.project_id}?name=${product.title}`} >
+      
       <div className="block group-hover/product:shadow-2xl">
         <Image
-          src={product.thumbnail}
+          src={image}
           height="600"
           width="600"
           className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
+          onError={() => setImage(PlaceHolderImage)}
         />
       </div>
-      </Link>
+      
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}

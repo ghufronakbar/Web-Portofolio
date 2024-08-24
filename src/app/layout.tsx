@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Lans The Prodigy | Ghufron Akbar",
   description: "Ghufron Akbar Portofolio",
   keywords: [
+    "Web Portofolio",
     "Lans The Prodigy",
     "Ghufron Akbar",
     "Ghufron",
@@ -42,8 +43,8 @@ export const metadata: Metadata = {
   creator: "Lans The Prodigy",
   publisher: "Lans The Prodigy",
   icons: {
-    icon: "/images/letter-l.png",
-    shortcut: "/images/letter-l.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     title: "Lans The Prodigy | Ghufron Akbar",
@@ -52,12 +53,12 @@ export const metadata: Metadata = {
     siteName: "Lans The Prodigy",
     images: [
       {
-        url: "https://lanstheprodigy.vercel.app/api/og",
+        url: "https://lanstheprodigy.vercel.app",
         width: 1200,
         height: 630,
       },
     ],
-    locale: "en-US",
+    locale: "id-ID",
     type: "website",
   },
   robots: {
@@ -77,8 +78,7 @@ const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) => {
-  const navItems = NavItems;
+}>) => {  
   return (
     <>
       <html lang="en">
@@ -86,7 +86,7 @@ const RootLayout = ({
           <link rel="icon" href="/images/letter-l.png" sizes="any" />
         </head>
         <body className={inter.className}>
-          <FloatingNav navItems={navItems} />
+          <FloatingNav navItems={NavItems} />
           <TracingBeam className="px-6">
             <BackgroundBeams />
             <Spotlight

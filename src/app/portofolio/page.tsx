@@ -1,4 +1,3 @@
-"use client";
 import ContactSection from "@/components/section/ContactSection";
 import AboutMeSection from "@/components/section/AboutMeSection";
 import SocialMediaSection from "@/components/section/SocialMediaSection";

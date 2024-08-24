@@ -1,4 +1,4 @@
-const PlaceholdersSender = [
+const PlaceholdersSender: string[] = [
     "What's your name?",
     "Who are you?",
     "Ghufron Akbar",

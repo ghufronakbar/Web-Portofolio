@@ -1,4 +1,11 @@
-const ProgrammingLanguage = [  
+interface ProgrammingLanguageType {
+  id: number;
+  name: string;
+  image: string;
+  percentage: number;
+}
+
+const ProgrammingLanguage: ProgrammingLanguageType[] = [
   {
     id: 3,
     name: "JavaScript",
@@ -40,14 +47,13 @@ const ProgrammingLanguage = [
     name: "Flutter",
     image: "/images/logo/flutter.png",
     percentage: 40,
-  },  
+  },
   {
     id: 11,
-    name: "Python - Flask",
-    image: "/images/logo/python.png",
+    name: "React Native",
+    image: "/images/logo/rn.png",
     percentage: 60,
   },
 ];
 
 export default ProgrammingLanguage;
-

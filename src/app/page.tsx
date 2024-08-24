@@ -3,7 +3,7 @@ import Portofolio from "./portofolio/page";
 const Home = () => {
   return (
     <>
-      <Portofolio />
+      <Portofolio />      
     </>
   );
 };

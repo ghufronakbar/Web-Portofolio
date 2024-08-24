@@ -11,7 +11,7 @@ const AboutMeSection = () => {
   const name = AboutMe.name
     .split(" ")
     .map((text) => ({ text: text, className: "text-4xl font-bold" }));
-  const title = useState<string[]>(AboutMe.title);
+  const title = AboutMe.title;
 
   const downloadCV = async () => {
     try {
@@ -47,7 +47,7 @@ const AboutMeSection = () => {
           <h1 className="text-4xl font-bold mt-4">Hi! I&apos;m</h1>
           <TypewriterEffectSmooth words={name} />
           <h1 className="text-1xl font-semibold">
-            <FlipWords words={title[0]} />
+            <FlipWords words={title} />
           </h1>
         </div>
       </div>

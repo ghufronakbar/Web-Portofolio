@@ -1,15 +1,13 @@
 "use client";
 
 import CardProject from "@/components/card/CardProject";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
 import { PlaceholdersAndVanishInputSearch } from "@/components/ui/placeholders-and-vanish-input-search";
 import PlaceholdersSearch from "@/data/PlaceholdersSearch";
-import Projects from "@/data/Projects";
+import Projects, { ProjectsType } from "@/data/Projects";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const Project = () => {
-  const projects = Projects;
+const ProjectPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [search, setSearch] = useState<string>(
@@ -17,12 +15,11 @@ const Project = () => {
   );
   const [type, setType] = useState<string>(searchParams.get("type") || "");
   const allTypes = Projects.flatMap((item) => item.types);
-  const uniqueTypes = Array.from(new Set(allTypes));  
+  const uniqueTypes = Array.from(new Set(allTypes));
 
   useEffect(() => {
     setSearch(searchParams.get("search") || "");
     setType(searchParams.get("type") || "");
-    console.log(type);
   }, [searchParams]);
 
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +30,10 @@ const Project = () => {
     router.push(`/project?search=${search}&type=${type}`);
   };
 
-  const searchProjectsByKeyword = (keyword: string, type: string): any[] => {
+  const searchProjectsByKeyword = (
+    keyword: string,
+    type: string
+  ): ProjectsType[] => {
     const filteredProjects = Projects.filter((project) => {
       let keywordMatch = false;
       let typeMatch = false;
@@ -60,16 +60,12 @@ const Project = () => {
 
   const filteredProjects = searchProjectsByKeyword(search, type);
 
-  console.log(filteredProjects);
-
   const handleOnChangeType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value);
     router.push(`/project?search=${search}&type=${e.target.value}`);
   };
 
-  useEffect(()=>{
-
-  },[])
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -93,7 +89,7 @@ const Project = () => {
               </option>
               {uniqueTypes.map((type) => (
                 <option key={type} value={type} className="">
-                  {" " +type}
+                  {" " + type}
                 </option>
               ))}
             </select>
@@ -140,21 +136,15 @@ const Project = () => {
         ) : null}
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((item) => (
             <CardProject
-              key={project.id}
-              id={project.id}
-              name={projects.find((p) => p.id === project.id)?.name}
-              heading={projects.find((p) => p.id === project.id)?.heading}
-              date={projects.find((p) => p.id === project.id)?.date}
-              images={projects.find((p) => p.id === project.id)?.images}
-              onClick={() => {
-                router.push(
-                  `/project/${project.id}?name=${
-                    projects.find((p) => p.id === project.id)?.name
-                  }`
-                );
-              }}
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              heading={item.heading}
+              date={item.date}
+              images={item.images}
+              link={`/project/${item.slug}`}
               className="max-w-full"
             />
           ))}
@@ -164,10 +154,4 @@ const Project = () => {
   );
 };
 
-const ProjectWithSuspense = () => (
-  <Suspense fallback={<LoadingSkeleton />}>
-    <Project />
-  </Suspense>
-);
-
-export default ProjectWithSuspense;
+export default ProjectPage;

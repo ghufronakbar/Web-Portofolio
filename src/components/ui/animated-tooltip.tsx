@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { GlareCard } from "./glare-card";
 import Link from "next/link";
+import formatString from "@/utils/formatString";
 
 export const AnimatedTooltip = ({
   items,
@@ -46,11 +47,11 @@ export const AnimatedTooltip = ({
         <div
           className="relative  flex flex-row items-center justify-center gap-4"
           key={item.type}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseEnter={() => setHoveredIndex(idx + 1)}
           onMouseLeave={() => setHoveredIndex(null)}          
         >
           <AnimatePresence mode="popLayout">
-            {hoveredIndex === item.id && (
+            {hoveredIndex === idx + 1 && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
@@ -89,8 +90,8 @@ export const AnimatedTooltip = ({
             >
               <Image src={item.icon} alt={item.type} width={20} height={20} />
 
-              <p className=" text-white font-semibold text-md truncate">
-                {item.type}
+              <p className=" text-white font-semibold text-md">                
+                {formatString(item.type,8)}
               </p>
             </GlareCard>
           </div>
