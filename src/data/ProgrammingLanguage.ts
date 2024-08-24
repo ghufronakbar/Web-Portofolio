@@ -8,7 +8,7 @@ interface ProgrammingLanguageType {
 const ProgrammingLanguage: ProgrammingLanguageType[] = [
   {
     id: 3,
-    name: "JavaScript",
+    name: "NodeJS",
     image: "/images/logo/js.svg",
     percentage: 80,
   },

@@ -11,7 +11,7 @@ const UnderConstruction = () => {
     <>
       {isShow && (
         <div
-          className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 mx-6"
+          className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 mx-6 "
           onClick={() => setIsShow(false)}
         >
           <div className="bg-black px-6 py-12 rounded-lg shadow-lg flex flex-col items-center md:gap-4 gap-2 border border-white/[0.2]">

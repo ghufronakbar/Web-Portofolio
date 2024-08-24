@@ -78,7 +78,7 @@ const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) => {  
+}>) => {
   return (
     <>
       <html lang="en">
@@ -92,10 +92,10 @@ const RootLayout = ({
             <Spotlight
               className="absolute h-full w-full transition-all duration-300 ease-in-out"
               fill="white"
-            />            
-            <UnderConstruction />
+            />
             {children}
           </TracingBeam>
+          <UnderConstruction />
         </body>
       </html>
     </>

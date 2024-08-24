@@ -13,6 +13,10 @@ const ProjectPage = () => {
   const [search, setSearch] = useState<string>(
     searchParams.get("search") || ""
   );
+  const [order, setOrder] = useState<string>(
+    searchParams.get("order") || ""
+  );
+
   const [type, setType] = useState<string>(searchParams.get("type") || "");
   const allTypes = Projects.flatMap((item) => item.types);
   const uniqueTypes = Array.from(new Set(allTypes));
@@ -20,6 +24,7 @@ const ProjectPage = () => {
   useEffect(() => {
     setSearch(searchParams.get("search") || "");
     setType(searchParams.get("type") || "");
+    setOrder(searchParams.get("order") || "")
   }, [searchParams]);
 
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,45 +32,59 @@ const ProjectPage = () => {
   };
 
   const onSubmitSearch = () => {
-    router.push(`/project?search=${search}&type=${type}`);
+    router.push(`/project?search=${search}&type=${type}&order=${order}`);
   };
 
   const searchProjectsByKeyword = (
     keyword: string,
-    type: string
+    type: string,
+    orderBy: string
   ): ProjectsType[] => {
     const filteredProjects = Projects.filter((project) => {
       let keywordMatch = false;
       let typeMatch = false;
-
-      // Cek keyword
+      
       if (project.keywords && Array.isArray(project.keywords)) {
         keywordMatch = project.keywords.some((kw) =>
           kw.toLowerCase().includes(keyword.toLowerCase())
         );
       }
-
-      // Cek type
+      
       if (type.length > 0 && project.types && Array.isArray(project.types)) {
         typeMatch = project.types.some(
           (tp) => tp.toLowerCase() === type.toLowerCase()
         );
       }
 
-      return type.length === 0 ? keywordMatch : keywordMatch && typeMatch;
+      return type.length === 0 ? keywordMatch : keywordMatch && typeMatch;     
     });
 
-    return filteredProjects;
+    if(orderBy && orderBy !== ""){      
+      if(orderBy === "latest"){        
+        return filteredProjects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      }
+      if(orderBy === "oldest"){        
+        return filteredProjects.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      }else{        
+        return filteredProjects
+      }
+    }else{      
+      return filteredProjects;
+    }
+
   };
 
-  const filteredProjects = searchProjectsByKeyword(search, type);
+  const filteredProjects = searchProjectsByKeyword(search, type, order);  
 
   const handleOnChangeType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value);
-    router.push(`/project?search=${search}&type=${e.target.value}`);
-  };
+    router.push(`/project?search=${search}&type=${e.target.value}&order=${order}`);
+  };  
 
-  useEffect(() => {}, []);
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOrder(e.target.value);
+    router.push(`/project?search=${search}&type=${type}&order=${e.target.value}`);
+  };
 
   return (
     <>
@@ -93,6 +112,14 @@ const ProjectPage = () => {
                 </option>
               ))}
             </select>
+            <div className="flex flex-row gap-2 z-50 self-end">
+              <label>Latest</label>
+              <input type="radio" value={"latest"} checked={order==="latest"} onChange={handleOptionChange}/>
+              <label>Oldest</label>
+              <input type="radio" value={"oldest"} checked={order==="oldest"} onChange={handleOptionChange}/>
+              <label>No Filter</label>
+              <input type="radio" value={""} checked={order === "latest"?false:order=== "oldest" ? false : true} onChange={handleOptionChange}/>
+            </div>
           </div>
         </div>
         {search.length > 0 && filteredProjects.length > 0 && type === "" ? (
@@ -135,7 +162,7 @@ const ProjectPage = () => {
           </h1>
         ) : null}
 
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between ">
           {filteredProjects.map((item) => (
             <CardProject
               key={item.id}
@@ -145,7 +172,7 @@ const ProjectPage = () => {
               date={item.date}
               images={item.images}
               link={`/project/${item.slug}`}
-              className="max-w-full"
+              className="w-full"
             />
           ))}
         </div>

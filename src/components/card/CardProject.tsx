@@ -26,9 +26,9 @@ const CardProject = ({
     const [image, setImage] = useState<string>(images[0]);
     return (
       <>
-        <Link key={id} href={link}>
-          <CardContainer className={className}>
-            <CardBody className=" relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2]  w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+        <Link key={id} href={link} className={"w-full"}>
+          <CardContainer className="w-full" >
+            <CardBody className="relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2]  w-full sm:w-[30rem] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"
                 className="text-xl font-bold  text-white"
@@ -45,8 +45,8 @@ const CardProject = ({
               <CardItem translateZ="100" className="w-full mt-4">
                 <Image
                   src={image}
-                  height="1000"
-                  width="1000"
+                  height={800}
+                  width={600}
                   className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                   alt={name} 
                   onError={() => setImage("/images/placeholder.webp")}                 

@@ -153,6 +153,11 @@ const Projects: ProjectsType[] = [
         name: "PostgreSQL",
         icon: "/images/logo/postgresql.png",
       },
+      {
+        id: 6,
+        name: "TypeScript",
+        icon: "/images/logo/ts.webp",
+      },
     ],
     images: [
       "/images/projects/di-desa/1.png",
@@ -200,6 +205,7 @@ const Projects: ProjectsType[] = [
       "React",
       "NextJS",
       "React Native",
+      "TypeScript",
     ],
   },
   {

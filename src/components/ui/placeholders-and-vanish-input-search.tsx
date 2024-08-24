@@ -50,18 +50,10 @@ export function PlaceholdersAndVanishInputSearch({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
+  const [search, setSearch] = useState<string>(searchParams.get("search")||"");
+  const [order, setOrder] = useState<string>(searchParams.get("order") || "");
   const [type, setType] = useState<string>(searchParams.get("type") || "");
   const [animating, setAnimating] = useState(false);
-
-  const [search, setSearch] = useState<string>(
-    searchParams.get("search") || ""
-  );
-
-  // useEffect(()=>{    
-  //   router.push(`/project?search=${search}`);
-  // },[value])
-
   
   const draw = useCallback(() => {
     if (!inputRef.current) return;
@@ -78,7 +70,7 @@ export function PlaceholdersAndVanishInputSearch({
     const fontSize = parseFloat(computedStyles.getPropertyValue("font-size"));
     ctx.font = `${fontSize * 2}px ${computedStyles.fontFamily}`;
     ctx.fillStyle = "#FFF";
-    ctx.fillText(value, 16, 40);
+    ctx.fillText(search, 16, 40);
 
     const imageData = ctx.getImageData(0, 0, 800, 800);
     const pixelData = imageData.data;
@@ -113,11 +105,11 @@ export function PlaceholdersAndVanishInputSearch({
       r: 1,
       color: `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`,
     }));
-  }, [value]);
+  }, [search]);
 
   useEffect(() => {
     draw();
-  }, [value, draw]);
+  }, [search, draw]);
 
   const animate = (start: number) => {
     const animateFrame = (pos: number = 0) => {
@@ -156,7 +148,7 @@ export function PlaceholdersAndVanishInputSearch({
         if (newDataRef.current.length > 0) {
           animateFrame(pos - 8);
         } else {
-          setValue("");
+          setSearch("");
           setAnimating(false);
         }
       });
@@ -187,15 +179,17 @@ export function PlaceholdersAndVanishInputSearch({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     vanishAndSubmit();
-    router.push(`/project?search=${value}&type=${type}`);
+    router.push(`/project?search=${search}&type=${type}&order=${order}`);
     // onSubmit && onSubmit(e);
   };
 
   useEffect(() => {
     const search = searchParams.get("search");    
     const type = searchParams.get("type");
+    const order = searchParams.get("order");
     setType(type || "");
-    setValue(search || "");
+    setSearch(search || "");
+    setOrder(order || "");
   },[searchParams])
 
   
@@ -203,7 +197,7 @@ export function PlaceholdersAndVanishInputSearch({
     <form
       className={cn(
         "w-full relative max-w-xl  bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end",
-        value && "bg-zinc-800"
+        search && "bg-zinc-800"
       )}
       onSubmit={handleSubmit}
     >
@@ -217,14 +211,14 @@ export function PlaceholdersAndVanishInputSearch({
       <input
         onChange={(e) => {          
           if (!animating) {
-            setValue(e.target.value);            
+            setSearch(e.target.value);            
             // onChange && onChange(e);
-            router.push(`/project?search=${e.target.value}&type=${type}`);
+            router.push(`/project?search=${e.target.value}&type=${type}&order=${order}`);
           }
         }}
         onKeyDown={handleKeyDown}
         ref={inputRef}
-        value={value}
+        value={search}
         type="text"
         className={cn(
           "w-full relative text-sm sm:text-base z-50 border-none text-white bg-transparent  h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
@@ -233,7 +227,7 @@ export function PlaceholdersAndVanishInputSearch({
       />
 
       <button
-        disabled={!value}
+        disabled={!search}
         type="submit"
         className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full  bg-zinc-900 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center"
       >
@@ -257,7 +251,7 @@ export function PlaceholdersAndVanishInputSearch({
               strokeDashoffset: "50%",
             }}
             animate={{
-              strokeDashoffset: value ? 0 : "50%",
+              strokeDashoffset: search ? 0 : "50%",
             }}
             transition={{
               duration: 0.3,
@@ -271,7 +265,7 @@ export function PlaceholdersAndVanishInputSearch({
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
         <AnimatePresence mode="wait">
-          {!value && (
+          {!search && (
             <motion.p
               initial={{
                 y: 5,
