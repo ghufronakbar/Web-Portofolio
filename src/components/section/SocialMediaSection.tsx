@@ -1,5 +1,5 @@
 import SocialMedia from "@/data/SocialMedia"
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
+import { AnimatedTooltipSocmed } from "@/components/ui/animated-tooltip-socmed"
 
 const SocialMediaSection = () => {
     return(
@@ -11,7 +11,7 @@ const SocialMediaSection = () => {
 
           <div className="flex flex-row items-center justify-between">
             <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-4 mt-6 max-w-6xl">
-              <AnimatedTooltip items={SocialMedia} />
+              <AnimatedTooltipSocmed items={SocialMedia} />
             </div>
           </div>
         </div>

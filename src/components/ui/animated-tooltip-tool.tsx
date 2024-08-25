@@ -9,15 +9,12 @@ import {
   useSpring,
 } from "framer-motion";
 import { GlareCard } from "./glare-card";
+import { LinkItemType, ToolItemType } from "@/data/Projects";
 
 export const AnimatedTooltipTool = ({
   items,
 }: {
-  items: {
-    id: number;
-    name: string;    
-    icon: string;
-  }[];
+  items:ToolItemType[];
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };

@@ -578,11 +578,11 @@ const Projects: ProjectItemType[] = [
     date: "2024-08-01",
     types: ["Website", "Mini Project", "Clone"],
     description:
-      "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples.",
+      "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples. Can use both Indonesian and English on this website.",
     jobdesc:
       "As my mini project, I made this website as a client side only website using NextJS. The website is styled using TailwindCSS. Then for deployment using Vercel.",
     tools: [generateTool("NextJS"), generateTool("Vercel")],
-    images: generateImages(6, "netflix-clone"),
+    images: generateImages(9, "netflix-clone"),
     links: [
       generateUrl("Website", "Web", "https://eremika.vercel.app/"),
       generateUrl(

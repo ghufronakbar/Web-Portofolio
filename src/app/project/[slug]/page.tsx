@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { AnimatedTooltipSocmed } from "@/components/ui/animated-tooltip-socmed";
 import { AnimatedTooltipTool } from "@/components/ui/animated-tooltip-tool";
 import Projects from "@/data/Projects";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { notFound, useParams } from "next/navigation";
 import { useState } from "react";
 import ShowImage from "@/components/detail/ShowImage";
 import PlaceHolderImage from "@/data/PlaceholderImage";
+import { AnimatedTooltipLink } from "@/components/ui/animated-tooltip-link";
 
 const ProjectID = () => {
   const params = useParams();
@@ -67,7 +68,7 @@ const ProjectID = () => {
           </div>
           <div className="text-xl font-semibold">Links:</div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-4 max-w-6xl">
-            {project?.links && <AnimatedTooltip items={project?.links} />}
+            {project?.links && <AnimatedTooltipLink items={project?.links} />}
           </div>
         </div>
       </div>

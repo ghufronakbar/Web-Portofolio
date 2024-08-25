@@ -85,7 +85,7 @@ const RootLayout = ({
         <head>
           <link rel="icon" href="/images/letter-l.png" sizes="any" />
         </head>
-        <body className={inter.className}>
+        <body className={`${inter.className} hide-scrollbar`}>
           <FloatingNav navItems={NavItems} />
           <TracingBeam className="px-6">
             <BackgroundBeams />

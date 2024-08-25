@@ -36,6 +36,8 @@ body {
   display: none;
 }
 
+
+
 @media (max-width: 768px) {
   .no-margin-xy {
     margin-left: 0 !important;
