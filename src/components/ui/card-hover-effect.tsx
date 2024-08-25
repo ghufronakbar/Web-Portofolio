@@ -1,5 +1,6 @@
 "use client";
 
+import { ProgrammingLanguageType } from "@/data/ProgrammingLanguage";
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -10,12 +11,7 @@ export const HoverEffect = ({
   items,
   className,
 }: {
-  items: {
-    id: number;
-    name: string;
-    image: string;
-    percentage: number;
-  }[];
+  items: ProgrammingLanguageType[];
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -27,42 +23,41 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link href={`/project?search=${item.name}`} key={item?.id}>
-        <div
-          key={item?.id}
-          className="relative group  block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}          
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-slate-800/[0.8] block  rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card>
-            <div className="flex flex-col relative items-center">
-              <Image
-                src={item.image}
-                alt={"Image" || item.name}
-                width={100}
-                height={100}
-              />
-              <CardTitle>{item.name}</CardTitle>
-            </div>
-          </Card>
-        </div>
+        <Link href={`/project?search=${item.name}`} key={idx}>
+          <div
+            className="relative group  block p-2 h-full w-full"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 h-full w-full bg-slate-800/[0.8] block  rounded-3xl"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <Card>
+              <div className="flex flex-col relative items-center">
+                <Image
+                  src={item.image}
+                  alt={"Image" || item.name}
+                  width={100}
+                  height={100}
+                />
+                <CardTitle>{item.name}</CardTitle>
+              </div>
+            </Card>
+          </div>
         </Link>
       ))}
     </div>

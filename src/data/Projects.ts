@@ -1,18 +1,40 @@
-export interface ToolsType {
-  id: number;
+import { IconMap, IconType, ToolType } from "@/models/Icon";
+
+export type ToolItemType = {
   name: string;
-  icon: string;
-}
+  icon: IconType;
+};
 
-export interface LinksType {
-  id: number;
-  type: string;
+export type LinkItemType = {
+  name: string;
   url: string;
-  icon: string;
-}
+  icon: IconType;
+};
 
-export type ProjectsType = {
-  id: number;
+const generateTool = (name: ToolType): ToolItemType => {
+  const icon = IconMap[name];
+  return { name, icon };
+};
+
+const generateUrl = (
+  name: string,
+  iconName: ToolType,
+  url: string
+): LinkItemType => {
+  const icon = IconMap[iconName];
+  return { name, icon, url };
+};
+
+const generateImages = (count: number, projectFolder: string): string[] => {
+  const prefixFolder = "/images/projects";
+  const images: string[] = [];
+  for (let i = 1; i <= count; i++) {
+    images.push(`${prefixFolder}/${projectFolder}/${i}.png`);
+  }
+  return images;
+};
+
+export type ProjectItemType = {
   slug: string;
   name: string;
   heading: string;
@@ -20,15 +42,14 @@ export type ProjectsType = {
   jobdesc: string;
   date: string;
   types: string[];
-  tools: ToolsType[];
+  tools: ToolItemType[];
   images: string[];
-  links: LinksType[];
+  links: LinkItemType[];
   keywords: string[];
 };
 
-const Projects: ProjectsType[] = [
+const Projects: ProjectItemType[] = [
   {
-    id: 1,
     slug: "sampahmas-waste-management-system",
     name: "Sampahmas",
     heading: "Waste Management System",
@@ -39,70 +60,44 @@ const Projects: ProjectsType[] = [
     date: "2023-11-01",
     types: ["Project", "Website", "Mobile App", "Design", "Team Project"],
     tools: [
-      {
-        id: 1,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 2,
-        name: "Firebase",
-        icon: "/images/logo/firebase.png",
-      },
-      { id: 3, name: "C++", icon: "/images/logo/cpp.png" },
-      {
-        id: 4,
-        name: "Google Maps",
-        icon: "/images/logo/maps.png",
-      },
-      {
-        id: 5,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
+      generateTool("Kotlin"),
+      generateTool("Firebase"),
+      generateTool("C++"),
+      generateTool("Google Maps"),
+      generateTool("Android Studio"),
     ],
-    images: [
-      "/images/projects/sampahmas/1.png",
-      "/images/projects/sampahmas/2.png",
-      "/images/projects/sampahmas/3.png",
-      "/images/projects/sampahmas/4.png",
-      "/images/projects/sampahmas/5.png",
-      "/images/projects/sampahmas/6.png",
-      "/images/projects/sampahmas/7.png",
-      "/images/projects/sampahmas/8.png",
-      "/images/projects/sampahmas/9.png",
-    ],
+    images: generateImages(9, "sampahmas"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/Sampahmas-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/Sampahmas-VendingMachine-Webserver-JS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Object Detection",
-        url: "https://github.com/ghufronakbar/Sampahmas-ObjectDetection-IOT",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 4,
-        type: "User Interface Design",
-        url: "https://www.figma.com/design/rWtsf90SoVPv8nKiR4Nuyo/SAMPAHMAS-Waste-Management-System",
-        icon: "/icons/figma.png",
-      },
-      {
-        id: 5,
-        type: "Video Pitch",
-        url: "https://www.instagram.com/reel/C2cA6ewvVjm/",
-        icon: "/icons/instagram.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Sampahmas-Mobile-Kotlin"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Sampahmas-VendingMachine-Webserver-JS"
+      ),
+      generateUrl(
+        "Object Detection",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Sampahmas-ObjectDetection-IOT"
+      ),
+      generateUrl(
+        "User Interface Design",
+        "Figma",
+        "https://www.figma.com/design/rWtsf90SoVPv8nKiR4Nuyo/SAMPAHMAS-Waste-Management-System"
+      ),
+      generateUrl(
+        "Video Pitch",
+        "Instagram",
+        "https://www.instagram.com/reel/C2cA6ewvVjm/"
+      ),
+      generateUrl(
+        "Award",
+        "LinkedIn",
+        "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer"
+      ),
     ],
     keywords: [
       "Sampahmas",
@@ -117,7 +112,6 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 2,
     slug: "didesa-village-information-system",
     name: "DiDesa - Digitalisasi Desa",
     heading: "Village Information System",
@@ -128,71 +122,31 @@ const Projects: ProjectsType[] = [
     date: "2024-04-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
-      {
-        id: 1,
-        name: "React Native",
-        icon: "/images/logo/rn.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "PostgreSQL",
-        icon: "/images/logo/postgresql.png",
-      },
-      {
-        id: 6,
-        name: "TypeScript",
-        icon: "/images/logo/ts.webp",
-      },
+      generateTool("React Native"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("PostgreSQL"),
+      generateTool("TypeScript"),
     ],
-    images: [
-      "/images/projects/di-desa/1.png",
-      "/images/projects/di-desa/2.png",
-      "/images/projects/di-desa/3.png",
-      "/images/projects/di-desa/4.png",
-      "/images/projects/di-desa/5.png",
-      "/images/projects/di-desa/6.png",
-      "/images/projects/di-desa/7.png",
-    ],
+    images: generateImages(7, "di-desa"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App Repository",
-        url: "https://github.com/ghufronakbar/DiDesa-Mobile-ReactNative",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server Repository",
-        url: "https://github.com/ghufronakbar/DiDesa-Backend-ExpressJS-Remake",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Website Repository",
-        url: "https://github.com/ghufronakbar/DiDesa-Website-NextJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 4,
-        type: "Website",
-        url: "https://didesa.vercel.app",
-        icon: "/icons/web.png",
-      },
+      generateUrl(
+        "Mobile App Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/DiDesa-Mobile-ReactNative"
+      ),
+      generateUrl(
+        "Web Server Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/DiDesa-Backend-ExpressJS-Remake"
+      ),
+      generateUrl(
+        "Website Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/DiDesa-Website-NextJS"
+      ),
+      generateUrl("Website", "Web", "https://didesa.vercel.app"),
     ],
     keywords: [
       "DiDesa - Digitalisasi Desa",
@@ -209,7 +163,6 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 3,
     slug: "lestari-wildlife-data-collection-application",
     name: "Lestari",
     heading: "Wildlife Data Collection Application",
@@ -220,88 +173,38 @@ const Projects: ProjectsType[] = [
     date: "2024-03-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
-      {
-        id: 1,
-        name: "Flutter",
-        icon: "/images/logo/flutter.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "PostgreSQL",
-        icon: "/images/logo/postgresql.png",
-      },
-      {
-        id: 6,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 7,
-        name: "Firebase",
-        icon: "/images/logo/firebase.png",
-      },
-      {
-        id: 8,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
-      {
-        id: 9,
-        name: "Google Maps",
-        icon: "/images/logo/maps.png",
-      },
+      generateTool("Flutter"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("PostgreSQL"),
+      generateTool("Kotlin"),
+      generateTool("Firebase"),
+      generateTool("Android Studio"),
+      generateTool("Google Maps"),
     ],
-    images: [
-      "/images/projects/lestari/1.png",
-      "/images/projects/lestari/2.png",
-      "/images/projects/lestari/3.png",
-      "/images/projects/lestari/4.png",
-      "/images/projects/lestari/5.png",
-      "/images/projects/lestari/6.png",
-      "/images/projects/lestari/7.png",
-      "/images/projects/lestari/8.png",
-      "/images/projects/lestari/9.png",
-    ],
+    images: generateImages(7, "lestari"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/Lestari-Mobile-Flutter",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/Lestari-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/Lestari-DashboardAdmin-NextJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 4,
-        type: "Mobile App (Beta)",
-        url: "https://github.com/ghufronakbar/Lestari-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Lestari-Mobile-Flutter"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Lestari-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "Dashboard Admin",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Lestari-DashboardAdmin-NextJS"
+      ),
+      generateUrl(
+        "Mobile App (Beta)",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Lestari-Mobile-Kotlin"
+      ),
     ],
     keywords: [
       "Lestari",
@@ -318,7 +221,6 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 4,
     slug: "event-ease-ticket-purchase-system",
     name: "Event Ease",
     heading: "Information System For Ticket Purchases",
@@ -329,73 +231,35 @@ const Projects: ProjectsType[] = [
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Kotlin as a native Android application. As well as using MySQL as a database.",
     date: "2024-06-01",
     tools: [
-      {
-        id: 1,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "MySQL",
-        icon: "/images/logo/mysql.png",
-      },
-      {
-        id: 6,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
+      generateTool("Kotlin"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("MySQL"),
+      generateTool("Android Studio"),
     ],
-    images: [
-      "/images/projects/event-ease/1.png",
-      "/images/projects/event-ease/2.png",
-      "/images/projects/event-ease/3.png",
-      "/images/projects/event-ease/4.png",
-      "/images/projects/event-ease/5.png",
-      "/images/projects/event-ease/6.png",
-      "/images/projects/event-ease/7.png",
-      "/images/projects/event-ease/8.png",
-      "/images/projects/event-ease/9.png",
-    ],
+    images: generateImages(7, "event-ease"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/EventEase-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/EventEase-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/EventEase-DashboardAdmin-NextJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 4,
-        type: "Dashboard Organization",
-        url: "https://github.com/ghufronakbar/EventEase-DashboardOrganization-NextJS",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/EventEase-Mobile-Kotlin"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/EventEase-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "Dashboard Admin",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/EventEase-DashboardAdmin-NextJS"
+      ),
+      generateUrl(
+        "Dashboard Organization",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/EventEase-DashboardOrganization-NextJS"
+      ),
     ],
     keywords: [
       "EventEase",
@@ -410,84 +274,45 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 5,
     slug: "supersos-emergency-call-system",
     name: "SuperSOS",
     heading: "Emergency Call / SOS System",
     date: "2024-04-01",
     tools: [
-      {
-        id: 1,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "MySQL",
-        icon: "/images/logo/mysql.png",
-      },
-      {
-        id: 6,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
+      generateTool("Kotlin"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("MySQL"),
+      generateTool("Android Studio"),
     ],
     types: ["Project", "Website", "Mobile App"],
     description:
       "It is an emergency call or SOS system that involves the user and the agency, where the agency requires a permission to be able to use the application. Equipped with location-based services.",
     jobdesc:
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Kotlin as a native Android application. As well as using MySQL as a database.",
-    images: [
-      "/images/projects/super-sos/1.png",
-      "/images/projects/super-sos/2.png",
-      "/images/projects/super-sos/3.png",
-      "/images/projects/super-sos/4.png",
-      "/images/projects/super-sos/5.png",
-      "/images/projects/super-sos/6.png",
-      "/images/projects/super-sos/7.png",
-      "/images/projects/super-sos/8.png",
-      "/images/projects/super-sos/9.png",
-    ],
+    images: generateImages(7, "supersos"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/SuperSOS-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/SuperSOS-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/SuperSOS-DashboardAdmin-NextJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 4,
-        type: "Dashboard Instances",
-        url: "https://github.com/ghufronakbar/SuperSOS-DashboardInstances-NextJS",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/SuperSOS-Mobile-Kotlin"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/SuperSOS-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "Dashboard Admin",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/SuperSOS-DashboardAdmin-NextJS"
+      ),
+      generateUrl(
+        "Dashboard Instances",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/SuperSOS-DashboardInstances-NextJS"
+      ),
     ],
     keywords: [
       "SuperSOS",
@@ -503,78 +328,40 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 6,
     slug: "coffee-ordering-system",
     name: "Goffee",
     heading: "Coffee Ordering System",
     date: "2024-05-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
-      {
-        id: 1,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "MySQL",
-        icon: "/images/logo/mysql.png",
-      },
-      {
-        id: 6,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
+      generateTool("Kotlin"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("MySQL"),
+      generateTool("Android Studio"),
     ],
     description:
       "An ordering system at a coffee shop, users can checkout the cart containing the menu to be purchased. Users can choose to takeaway and delivery. Admin can manage a menu by managing the menu on the admin dashboard. There is a graph to do an in-depth analysis of sales.",
     jobdesc:
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Kotlin as a native Android application. As well as using MySQL as a database.",
-    images: [
-      "/images/projects/goffee/1.png",
-      "/images/projects/goffee/2.png",
-      "/images/projects/goffee/3.png",
-      "/images/projects/goffee/4.png",
-      "/images/projects/goffee/5.png",
-      "/images/projects/goffee/6.png",
-      "/images/projects/goffee/7.png",
-      "/images/projects/goffee/8.png",
-      "/images/projects/goffee/9.png",
-    ],
+    images: generateImages(7, "goffee"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/Goffee-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/Goffee-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/Goffee-DashboardAdmin-NextJS",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Goffee-Mobile-Kotlin"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Goffee-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "Dashboard Admin",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Goffee-DashboardAdmin-NextJS"
+      ),
     ],
     keywords: [
       "Goffee",
@@ -590,77 +377,40 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 7,
     slug: "radin-grocery-ordering-system",
     name: "Radin",
     heading: "Grocery Ordering System",
     date: "2024-05-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
-      {
-        id: 1,
-        name: "Kotlin",
-        icon: "/images/logo/kotlin.png",
-      },
-      {
-        id: 2,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 3,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 4,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 5,
-        name: "MySQL",
-        icon: "/images/logo/mysql.png",
-      },
-      {
-        id: 6,
-        name: "Android Studio",
-        icon: "/images/logo/android.png",
-      },
+      generateTool("Kotlin"),
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("MySQL"),
+      generateTool("Android Studio"),
     ],
     description:
       "An ordering system at a grocery store, users can checkout the cart containing the products to be purchased. There are also options for takeaway and delivery. Users can choose to takeaway and delivery. Admin can manage a menu by managing products based on stock on the admin dashboard. There is a graph to do an in-depth analysis of sales.",
     jobdesc:
       "As the leader of this project, I organize the course of making this application starting from system design, especially for database design, functional and non-functional needs and the tech stack used. I also served as the backend engineer and created the dashboard/back office for the admin. I also did the documentation of this system including API documentation. The tech stack used is ExpressJS as a server side or backend service, NextJS as a client side which is used as an interface for the dashboard / back office for the admin, and Kotlin as a native Android application. As well as using MySQL as a database.",
-    images: [
-      "/images/projects/radin/1.png",
-      "/images/projects/radin/2.png",
-      "/images/projects/radin/3.png",
-      "/images/projects/radin/4.png",
-      "/images/projects/radin/5.png",
-      "/images/projects/radin/6.png",
-      "/images/projects/radin/7.png",
-      "/images/projects/radin/8.png",
-    ],
+    images: generateImages(7, "radin"),
     links: [
-      {
-        id: 1,
-        type: "Mobile App",
-        url: "https://github.com/ghufronakbar/Radin-Mobile-Kotlin",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/Radin-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 3,
-        type: "Dashboard Admin",
-        url: "https://github.com/ghufronakbar/Radin-DashboardAdmin-NextJS",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Mobile App",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Radin-Mobile-Kotlin"
+      ),
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Radin-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "Dashboard Admin",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Radin-DashboardAdmin-NextJS"
+      ),
     ],
     keywords: [
       "Radin",
@@ -676,67 +426,34 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 8,
     slug: "ice-production-calculation-system",
     name: "Fuzzy Tsukamoto Calculation",
     heading: "Ice Production Calculation System",
     date: "2024-05-01",
     types: ["Mini Project", "Website"],
     tools: [
-      {
-        id: 1,
-        name: "ExpressJS",
-        icon: "/images/logo/express.png",
-      },
-      {
-        id: 2,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 3,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 4,
-        name: "PostgreSQL",
-        icon: "/images/logo/postgresql.png",
-      },
-      {
-        id: 5,
-        name: "Vercel",
-        icon: "/images/logo/vercel.svg",
-      },
+      generateTool("ExpressJS"),
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("PostgreSQL"),
+      generateTool("Vercel"),
     ],
     description:
       "A system to calculate ice production efficiently using the tsukamoto fuzzy method. This system will calculate how many efficient results to calculate production with a predetermined algorithm.",
     jobdesc:
       "I tried to create a website to calculate effective ice production using the Fuzzy Tsukamoto method. This application is made with client and server. With the server side using ExpressJS as a Backend Service and NextJS as a client side as an interface for users. Using PostgreSQL as a database.",
-    images: [
-      "/images/projects/fuzzy/1.png",
-      "/images/projects/fuzzy/2.png",
-      "/images/projects/fuzzy/3.png",
-      "/images/projects/fuzzy/4.png",
-      "/images/projects/fuzzy/5.png",
-      "/images/projects/fuzzy/6.png",
-      "/images/projects/fuzzy/7.png",
-      "/images/projects/fuzzy/8.png",
-      "/images/projects/fuzzy/9.png",
-    ],
+    images: generateImages(7, "fuzzy-calculation"),
     links: [
-      {
-        id: 1,
-        type: "Web Server",
-        url: "https://github.com/ghufronakbar/PenghitunganFuzzyTsukamoto-Backend-ExpressJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "User Website",
-        url: "https://github.com/ghufronakbar/PenghitunganFuzzyTsukamoto-NextJS",
-        icon: "/icons/github.png",
-      },
+      generateUrl(
+        "Web Server",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/PenghitunganFuzzyTsukamoto-Backend-ExpressJS"
+      ),
+      generateUrl(
+        "User Website",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/PenghitunganFuzzyTsukamoto-NextJS"
+      ),
     ],
     keywords: [
       "Fuzzy Tsukamoto Calculation",
@@ -752,57 +469,33 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 9,
     slug: "check-your-khodam",
     name: "Check Your Khodam",
     heading: "Information System Analyzing the Djinn",
     date: "2024-07-01",
     types: ["Mini Project", "Website", "Public"],
     tools: [
-      {
-        id: 1,
-        name: "React",
-        icon: "/images/logo/react.png",
-      },
-      {
-        id: 2,
-        name: "NextJS",
-        icon: "/images/logo/next.png",
-      },
-      {
-        id: 3,
-        name: "Railway",
-        icon: "/images/logo/railway.svg",
-      },
-      {
-        id: 4,
-        name: "Socket.io",
-        icon: "/images/logo/socketio.png",
-      },
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("Railway"),
+      generateTool("Socket.io"),
     ],
     description:
       "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
     jobdesc:
       "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
-    images: [
-      "/images/projects/check-khodam/1.png",
-      "/images/projects/check-khodam/2.png",
-      "/images/projects/check-khodam/3.png",
-      "/images/projects/check-khodam/4.png",
-    ],
+    images: generateImages(4, "check-khodam"),
     links: [
-      {
-        id: 1,
-        type: "Website",
-        url: "https://github.com/ghufronakbar/Check-Khodam-NextJS",
-        icon: "/icons/github.png",
-      },
-      {
-        id: 2,
-        type: "Deployed Website",
-        url: "https://cek-khodam-online.up.railway.app/",
-        icon: "/icons/web.png",
-      },
+      generateUrl(
+        "Website",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Check-Khodam-NextJS"
+      ),
+      generateUrl(
+        "Deployed Website",
+        "Web",
+        "https://cek-khodam-online.up.railway.app/"
+      ),
     ],
     keywords: [
       "Check Your Khodam",
@@ -817,47 +510,28 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 10,
     slug: "berijalan-redesign-user-interfaces",
     name: "Berijalan Redesign",
     heading: "Redesign of Berijalan Website",
     date: "2024-07-01",
     types: ["Design"],
-    tools: [
-      {
-        id: 1,
-        name: "Figma",
-        icon: "/images/logo/figma.png",
-      },
-    ],
+    tools: [generateTool("Figma")],
     description:
       "Redesigning the Berijalan Member of Astra website at the FTI Fest UKDW 2023 competition. Applying a minimalist concept for the design. The website was created using Figma as a design tool. Secured 3rd place in the Berijalan Member of ASTRA web UI/UX redesign competition organized by UKDW during FTI FEST 2023, showcasing excellence in web redesign. ",
     jobdesc:
       "As a helper in making the redesign, I was assigned to create components in the process of redesigning the website. I also played a role in determining the design concept to be created. Applied Design Thinking methodology to create an intuitive and user-friendly interface, highlighting a commitment to innovation and improved user experience. Presented the results to the company as a replacement for the current working web.",
-    images: [
-      "/images/projects/redesign-berijalan/1.png",
-      "/images/projects/redesign-berijalan/2.png",
-      "/images/projects/redesign-berijalan/3.png",
-      "/images/projects/redesign-berijalan/4.png",
-      "/images/projects/redesign-berijalan/5.png",
-      "/images/projects/redesign-berijalan/6.png",
-      "/images/projects/redesign-berijalan/7.png",
-      "/images/projects/redesign-berijalan/8.png",
-      "/images/projects/redesign-berijalan/9.png",
-    ],
+    images: generateImages(9, "berijalan-redesign"),
     links: [
-      {
-        id: 1,
-        type: "User Interface Design",
-        url: "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023",
-        icon: "/icons/figma.png",
-      },
-      {
-        id: 2,
-        type: "Award",
-        url: "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/",
-        icon: "/icons/linkedin.png",
-      },
+      generateUrl(
+        "User Interface Design",
+        "Figma",
+        "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023"
+      ),
+      generateUrl(
+        "Award",
+        "LinkedIn",
+        "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/"
+      ),
     ],
     keywords: [
       "Berijalan",
@@ -870,49 +544,24 @@ const Projects: ProjectsType[] = [
     ],
   },
   {
-    id: 11,
     name: "Website Pengaduan Masyarakat",
     slug: "pengaduan-masyarakat-purwodadi",
     heading: "Public Complaint Website for Purwodadi Village Residents",
     date: "2024-08-01",
     types: ["Website", "Community Service", "Mini Project"],
-    tools: [
-      {
-        id: 1,
-        name: "PHP",
-        icon: "/images/logo/php.png",
-      },
-      {
-        id: 2,
-        name: "MySQL",
-        icon: "/images/logo/mysql.png",
-      },
-    ],
+    tools: [generateTool("PHP"), generateTool("MySQL")],
     description:
       "This is a website that handles public complaints for Purwodadi Sub-district. On this website there is a landing page that introduces the identity of the Kalurahan. The complaint feature is based on two-way communication with the administrators of the village, the results of which are displayed transparently. If you object to telling your identity you can anonymously send it.",
     jobdesc:
       "As my mini project as a community service, I made this website as a monolith website using PHP Native and MySQL. I also took care of server issues such as deploying, setting up domains and taking care of SSL and website legality due to sensitive information.",
-    images: [
-      "/images/projects/purwodadi/1.png",
-      "/images/projects/purwodadi/2.png",
-      "/images/projects/purwodadi/3.png",
-      "/images/projects/purwodadi/4.png",
-      "/images/projects/purwodadi/5.png",
-      "/images/projects/purwodadi/6.png",
-    ],
+    images: generateImages(6, "purwodadi"),
     links: [
-      {
-        id: 1,
-        type: "Website",
-        url: "https://laporpurwodadi.site/",
-        icon: "/icons/web.png",
-      },
-      {
-        id: 2,
-        type: "Repository",
-        url: "https://github.com/ghufronakbar/WebsiteDesa",
-        icon: "/icons/github.png",
-      },
+      generateUrl("Website", "Web", "https://laporpurwodadi.site/"),
+      generateUrl(
+        "Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/WebsiteDesa"
+      ),
     ],
     keywords: [
       "Website Pengaduan Masyarakat",
@@ -920,6 +569,35 @@ const Projects: ProjectsType[] = [
       "Complaint",
       "PHP",
       "MySQL",
+    ],
+  },
+  {
+    name: "Netflix Clone",
+    slug: "netflix-clone-simping-content",
+    heading: "Clone Netflix Website for Simping Content",
+    date: "2024-08-01",
+    types: ["Website", "Mini Project", "Clone"],
+    description:
+      "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples.",
+    jobdesc:
+      "As my mini project, I made this website as a client side only website using NextJS. The website is styled using TailwindCSS. Then for deployment using Vercel.",
+    tools: [generateTool("NextJS"), generateTool("Vercel")],
+    images: generateImages(6, "netflix-clone"),
+    links: [
+      generateUrl("Website", "Web", "https://eremika.vercel.app/"),
+      generateUrl(
+        "Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/WebsiteBucinNetflix"
+      ),
+    ],
+    keywords: [
+      "Netflix Clone",
+      "Website Bucin",
+      "Clone",
+      "NextJS",
+      "TailwindCSS",
+      "Vercel",
     ],
   },
 ];

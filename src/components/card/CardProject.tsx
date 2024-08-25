@@ -1,32 +1,28 @@
 "use client";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { ProjectItemType } from "@/data/Projects";
 import formatDate from "@/utils/formatDate";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const CardProject = ({
-    id,
+type Props = ProjectItemType & {
+  className?: string
+}
+
+const CardProject = ({    
     name,
     heading,
     date,
-    images = [],
-    link,
+    slug,
+    images = [],    
     className
-  }: {
-    id: number;
-    name: string;
-    heading: string;
-    images: string[];
-    date: string;
-    link: string;
-    className?: string
-  }) => {
+  }: Props) => {
     const [image, setImage] = useState<string>(images[0]);
     return (
       <>
-        <Link key={id} href={link} className={"w-full"}>
+        <Link href={`/project/${slug}`} className={className}>
           <CardContainer className="w-full" >
             <CardBody className="relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2]  w-full sm:w-[30rem] h-auto rounded-xl p-6 border">
               <CardItem

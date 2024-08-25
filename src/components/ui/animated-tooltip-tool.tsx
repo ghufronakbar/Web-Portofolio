@@ -43,7 +43,7 @@ export const AnimatedTooltipTool = ({
         <div
           className="relative flex flex-row items-center justify-center gap-4"
           key={item.name}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {/* <AnimatePresence mode="popLayout">

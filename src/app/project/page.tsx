@@ -3,7 +3,7 @@
 import CardProject from "@/components/card/CardProject";
 import { PlaceholdersAndVanishInputSearch } from "@/components/ui/placeholders-and-vanish-input-search";
 import PlaceholdersSearch from "@/data/PlaceholdersSearch";
-import Projects, { ProjectsType } from "@/data/Projects";
+import Projects, { ProjectItemType } from "@/data/Projects";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -39,7 +39,7 @@ const ProjectPage = () => {
     keyword: string,
     type: string,
     orderBy: string
-  ): ProjectsType[] => {
+  ): ProjectItemType[] => {
     const filteredProjects = Projects.filter((project) => {
       let keywordMatch = false;
       let typeMatch = false;
@@ -163,15 +163,20 @@ const ProjectPage = () => {
         ) : null}
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between ">
-          {filteredProjects.map((item) => (
+          {filteredProjects.map((item, index) => (
             <CardProject
-              key={item.id}
-              id={item.id}
+              key={index}              
               name={item.name}
               heading={item.heading}
               date={item.date}
               images={item.images}
-              link={`/project/${item.slug}`}
+              slug={item.slug}
+              description={item.description}
+              jobdesc={item.jobdesc}
+              keywords={item.keywords}
+              tools={item.tools}
+              links={item.links}
+              types={item.types}
               className="w-full"
             />
           ))}
