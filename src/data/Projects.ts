@@ -221,6 +221,139 @@ const Projects: ProjectItemType[] = [
     ],
   },
   {
+    name: "Netflix Clone",
+    slug: "netflix-clone-simping-content",
+    heading: "Clone Netflix Website for Simping Content",
+    date: "2024-08-01",
+    types: ["Website", "Mini Project", "Clone"],
+    description:
+      "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples. Can use both Indonesian and English on this website.",
+    jobdesc:
+      "As my mini project, I made this website as a client side only website using NextJS. The website is styled using TailwindCSS. Then for deployment using Vercel.",
+    tools: [generateTool("NextJS"), generateTool("Vercel")],
+    images: generateImages(9, "netflix-clone"),
+    links: [
+      generateUrl("Website", "Web", "https://eremika.vercel.app/"),
+      generateUrl(
+        "Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/WebsiteBucinNetflix"
+      ),
+    ],
+    keywords: [
+      "Netflix Clone",
+      "Website Bucin",
+      "Clone",
+      "NextJS",
+      "TailwindCSS",
+      "Vercel",
+    ],
+  },
+  {
+    name: "Website Pengaduan Masyarakat",
+    slug: "pengaduan-masyarakat-purwodadi",
+    heading: "Public Complaint Website for Purwodadi Village Residents",
+    date: "2024-08-01",
+    types: ["Website", "Community Service", "Mini Project"],
+    tools: [generateTool("PHP"), generateTool("MySQL")],
+    description:
+      "This is a website that handles public complaints for Purwodadi Sub-district. On this website there is a landing page that introduces the identity of the Kalurahan. The complaint feature is based on two-way communication with the administrators of the village, the results of which are displayed transparently. If you object to telling your identity you can anonymously send it.",
+    jobdesc:
+      "As my mini project as a community service, I made this website as a monolith website using PHP Native and MySQL. I also took care of server issues such as deploying, setting up domains and taking care of SSL and website legality due to sensitive information.",
+    images: generateImages(6, "purwodadi"),
+    links: [
+      generateUrl("Website", "Web", "https://laporpurwodadi.site/"),
+      generateUrl(
+        "Repository",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/WebsiteDesa"
+      ),
+    ],
+    keywords: [
+      "Website Pengaduan Masyarakat",
+      "Purwodadi",
+      "Complaint",
+      "PHP",
+      "MySQL",
+    ],
+  },
+  {
+    slug: "berijalan-redesign-user-interfaces",
+    name: "Berijalan Redesign",
+    heading: "Redesign of Berijalan Website",
+    date: "2024-07-01",
+    types: ["Design"],
+    tools: [generateTool("Figma")],
+    description:
+      "Redesigning the Berijalan Member of Astra website at the FTI Fest UKDW 2023 competition. Applying a minimalist concept for the design. The website was created using Figma as a design tool. Secured 3rd place in the Berijalan Member of ASTRA web UI/UX redesign competition organized by UKDW during FTI FEST 2023, showcasing excellence in web redesign. ",
+    jobdesc:
+      "As a helper in making the redesign, I was assigned to create components in the process of redesigning the website. I also played a role in determining the design concept to be created. Applied Design Thinking methodology to create an intuitive and user-friendly interface, highlighting a commitment to innovation and improved user experience. Presented the results to the company as a replacement for the current working web.",
+    images: generateImages(9, "berijalan-redesign"),
+    links: [
+      generateUrl(
+        "User Interface Design",
+        "Figma",
+        "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023"
+      ),
+      generateUrl(
+        "Award",
+        "LinkedIn",
+        "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/"
+      ),
+    ],
+    keywords: [
+      "Berijalan",
+      "Redesign",
+      "Website",
+      "Astra",
+      "Figma",
+      "UI Design",
+      "UI/UX",
+    ],
+  },
+  {
+    slug: "check-your-khodam",
+    name: "Check Your Khodam",
+    heading: "Information System Analyzing the Djinn",
+    date: "2024-07-01",
+    types: ["Mini Project", "Website", "Public"],
+    tools: [
+      generateTool("React"),
+      generateTool("NextJS"),
+      generateTool("Railway"),
+      generateTool("Socket.io"),
+    ],
+    description:
+      "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
+    jobdesc:
+      "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
+    images: generateImages(4, "check-khodam"),
+    links: [
+      generateUrl(
+        "Website",
+        "GitHub",
+        "https://GitHub.com/ghufronakbar/Check-Khodam-NextJS"
+      ),
+      generateUrl(
+        "Deployed Website",
+        "Web",
+        "https://cek-khodam-online.up.railway.app/"
+      ),
+    ],
+    keywords: [
+      "Check Your Khodam",
+      "Check Khodam Online",
+      "Information System",
+      "Djinn",
+      "NodeJS",
+      "React",
+      "NextJS",
+      "Socket.io",
+      "Web Socket",
+    ],
+  },
+
+  {
     slug: "event-ease-ticket-purchase-system",
     name: "Event Ease",
     heading: "Information System For Ticket Purchases",
@@ -466,138 +599,6 @@ const Projects: ProjectItemType[] = [
       "ExpressJS",
       "PostgreSQL",
       "NextJS",
-    ],
-  },
-  {
-    slug: "check-your-khodam",
-    name: "Check Your Khodam",
-    heading: "Information System Analyzing the Djinn",
-    date: "2024-07-01",
-    types: ["Mini Project", "Website", "Public"],
-    tools: [
-      generateTool("React"),
-      generateTool("NextJS"),
-      generateTool("Railway"),
-      generateTool("Socket.io"),
-    ],
-    description:
-      "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
-    jobdesc:
-      "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
-    images: generateImages(4, "check-khodam"),
-    links: [
-      generateUrl(
-        "Website",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/Check-Khodam-NextJS"
-      ),
-      generateUrl(
-        "Deployed Website",
-        "Web",
-        "https://cek-khodam-online.up.railway.app/"
-      ),
-    ],
-    keywords: [
-      "Check Your Khodam",
-      "Check Khodam Online",
-      "Information System",
-      "Djinn",
-      "NodeJS",
-      "React",
-      "NextJS",
-      "Socket.io",
-      "Web Socket",
-    ],
-  },
-  {
-    slug: "berijalan-redesign-user-interfaces",
-    name: "Berijalan Redesign",
-    heading: "Redesign of Berijalan Website",
-    date: "2024-07-01",
-    types: ["Design"],
-    tools: [generateTool("Figma")],
-    description:
-      "Redesigning the Berijalan Member of Astra website at the FTI Fest UKDW 2023 competition. Applying a minimalist concept for the design. The website was created using Figma as a design tool. Secured 3rd place in the Berijalan Member of ASTRA web UI/UX redesign competition organized by UKDW during FTI FEST 2023, showcasing excellence in web redesign. ",
-    jobdesc:
-      "As a helper in making the redesign, I was assigned to create components in the process of redesigning the website. I also played a role in determining the design concept to be created. Applied Design Thinking methodology to create an intuitive and user-friendly interface, highlighting a commitment to innovation and improved user experience. Presented the results to the company as a replacement for the current working web.",
-    images: generateImages(9, "berijalan-redesign"),
-    links: [
-      generateUrl(
-        "User Interface Design",
-        "Figma",
-        "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023"
-      ),
-      generateUrl(
-        "Award",
-        "LinkedIn",
-        "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/"
-      ),
-    ],
-    keywords: [
-      "Berijalan",
-      "Redesign",
-      "Website",
-      "Astra",
-      "Figma",
-      "UI Design",
-      "UI/UX",
-    ],
-  },
-  {
-    name: "Website Pengaduan Masyarakat",
-    slug: "pengaduan-masyarakat-purwodadi",
-    heading: "Public Complaint Website for Purwodadi Village Residents",
-    date: "2024-08-01",
-    types: ["Website", "Community Service", "Mini Project"],
-    tools: [generateTool("PHP"), generateTool("MySQL")],
-    description:
-      "This is a website that handles public complaints for Purwodadi Sub-district. On this website there is a landing page that introduces the identity of the Kalurahan. The complaint feature is based on two-way communication with the administrators of the village, the results of which are displayed transparently. If you object to telling your identity you can anonymously send it.",
-    jobdesc:
-      "As my mini project as a community service, I made this website as a monolith website using PHP Native and MySQL. I also took care of server issues such as deploying, setting up domains and taking care of SSL and website legality due to sensitive information.",
-    images: generateImages(6, "purwodadi"),
-    links: [
-      generateUrl("Website", "Web", "https://laporpurwodadi.site/"),
-      generateUrl(
-        "Repository",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/WebsiteDesa"
-      ),
-    ],
-    keywords: [
-      "Website Pengaduan Masyarakat",
-      "Purwodadi",
-      "Complaint",
-      "PHP",
-      "MySQL",
-    ],
-  },
-  {
-    name: "Netflix Clone",
-    slug: "netflix-clone-simping-content",
-    heading: "Clone Netflix Website for Simping Content",
-    date: "2024-08-01",
-    types: ["Website", "Mini Project", "Clone"],
-    description:
-      "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples. Can use both Indonesian and English on this website.",
-    jobdesc:
-      "As my mini project, I made this website as a client side only website using NextJS. The website is styled using TailwindCSS. Then for deployment using Vercel.",
-    tools: [generateTool("NextJS"), generateTool("Vercel")],
-    images: generateImages(9, "netflix-clone"),
-    links: [
-      generateUrl("Website", "Web", "https://eremika.vercel.app/"),
-      generateUrl(
-        "Repository",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/WebsiteBucinNetflix"
-      ),
-    ],
-    keywords: [
-      "Netflix Clone",
-      "Website Bucin",
-      "Clone",
-      "NextJS",
-      "TailwindCSS",
-      "Vercel",
     ],
   },
 ];
