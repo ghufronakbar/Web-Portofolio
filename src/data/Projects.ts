@@ -118,6 +118,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("React Native"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("PostgreSQL"),
@@ -158,6 +159,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("Flutter"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("PostgreSQL"),
@@ -280,6 +282,7 @@ const Projects: ProjectItemType[] = [
     date: "2024-07-01",
     types: ["Mini Project", "Website", "Public"],
     tools: [
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("Railway"),
@@ -319,6 +322,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("Kotlin"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("MySQL"),
@@ -357,6 +361,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("Kotlin"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("MySQL"),
@@ -401,6 +406,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("Kotlin"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("MySQL"),
@@ -439,6 +445,7 @@ const Projects: ProjectItemType[] = [
     tools: [
       generateTool("Kotlin"),
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("MySQL"),
@@ -476,6 +483,7 @@ const Projects: ProjectItemType[] = [
     types: ["Mini Project", "Website"],
     tools: [
       generateTool("ExpressJS"),
+      generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("PostgreSQL"),
