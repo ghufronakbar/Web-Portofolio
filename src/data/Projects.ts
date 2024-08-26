@@ -65,6 +65,7 @@ const Projects: ProjectItemType[] = [
       generateTool("C++"),
       generateTool("Google Maps"),
       generateTool("Android Studio"),
+      generateTool("TailwindCSS"),
     ],
     images: generateImages(9, "sampahmas"),
     links: [
@@ -98,6 +99,7 @@ const Projects: ProjectItemType[] = [
         "LinkedIn",
         "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer"
       ),
+      generateUrl("Website", "Web", "https://sampahmas.vercel.app"),
     ],
     keywords: [
       "Sampahmas",
@@ -109,6 +111,15 @@ const Projects: ProjectItemType[] = [
       "Location Based Services",
       "C++",
       "Internet of Things",
+      "TailwindCSS",
+      "Vending Machine",
+      "Object Detection",
+      "Video Pitch",                  
+      "Figma",
+      "Website",
+      "Mobile App",
+      "TailwindCSS",
+      "Vercel",
     ],
   },
   {
@@ -230,7 +241,12 @@ const Projects: ProjectItemType[] = [
       "It is a clone website of the leading streaming website Netflix. This website aims to show love content to couples. There are play videos, shows various albums with some photos and descriptions displayed, and notes for couples. Can use both Indonesian and English on this website.",
     jobdesc:
       "As my mini project, I made this website as a client side only website using NextJS. The website is styled using TailwindCSS. Then for deployment using Vercel.",
-    tools: [generateTool("NextJS"), generateTool("Vercel")],
+    tools: [
+      generateTool("NextJS"),
+      generateTool("Vercel"),
+      generateTool("TailwindCSS"),
+      generateTool("TypeScript"),
+    ],
     images: generateImages(9, "netflix-clone"),
     links: [
       generateUrl("Website", "Web", "https://eremika.vercel.app/"),
@@ -255,7 +271,11 @@ const Projects: ProjectItemType[] = [
     heading: "Public Complaint Website for Purwodadi Village Residents",
     date: "2024-08-01",
     types: ["Website", "Community Service", "Mini Project"],
-    tools: [generateTool("PHP"), generateTool("MySQL")],
+    tools: [
+      generateTool("PHP"),
+      generateTool("MySQL"),
+      generateTool("TailwindCSS"),
+    ],
     description:
       "This is a website that handles public complaints for Purwodadi Sub-district. On this website there is a landing page that introduces the identity of the Kalurahan. The complaint feature is based on two-way communication with the administrators of the village, the results of which are displayed transparently. If you object to telling your identity you can anonymously send it.",
     jobdesc:
@@ -275,6 +295,7 @@ const Projects: ProjectItemType[] = [
       "Complaint",
       "PHP",
       "MySQL",
+      "TailwindCSS",
     ],
   },
   {

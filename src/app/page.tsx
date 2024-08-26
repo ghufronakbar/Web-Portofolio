@@ -1,9 +1,12 @@
+import { TracingBeam } from "@/components/ui/tracing-beam";
 import Portofolio from "./portofolio/page";
 
 const Home = () => {
   return (
     <>
-      <Portofolio />      
+      <TracingBeam className="px-6">
+        <Portofolio />
+      </TracingBeam>
     </>
   );
 };

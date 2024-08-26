@@ -27,7 +27,9 @@ export type IconType =
   | "/images/logo/instagram.png"
   | "/images/logo/linkedin.png"
   | "/images/logo/web.png"
-  | "/images/logo/whatsapp.png";
+  | "/images/logo/whatsapp.png"
+  | "/images/logo/tailwind.png";
+
 
 export type ToolType =
   | "Kotlin"
@@ -58,7 +60,8 @@ export type ToolType =
   | "Instagram"
   | "LinkedIn"
   | "Web"
-  | "WhatsApp";
+  | "WhatsApp"
+  | "TailwindCSS";
 
 export const IconMap: Record<ToolType, IconType> = {
   Kotlin: "/images/logo/kotlin.png",
@@ -90,4 +93,5 @@ export const IconMap: Record<ToolType, IconType> = {
   LinkedIn: "/images/logo/linkedin.png",
   Web: "/images/logo/web.png",
   WhatsApp: "/images/logo/whatsapp.png",
+  TailwindCSS: "/images/logo/tailwind.png",
 };

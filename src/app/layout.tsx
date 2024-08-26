@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import NavItems from "@/data/NavItems";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import UnderConstruction from "@/components/notification/UnderConstruction";
@@ -87,14 +86,12 @@ const RootLayout = ({
         </head>
         <body className={`${inter.className} hide-scrollbar`}>
           <FloatingNav navItems={NavItems} />
-          <TracingBeam className="px-6">
             <BackgroundBeams />
             <Spotlight
               className="absolute h-full w-full transition-all duration-300 ease-in-out"
               fill="white"
             />
             {children}
-          </TracingBeam>
           <UnderConstruction />
         </body>
       </html>

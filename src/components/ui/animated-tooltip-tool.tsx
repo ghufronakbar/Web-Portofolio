@@ -10,12 +10,9 @@ import {
 } from "framer-motion";
 import { GlareCard } from "./glare-card";
 import { LinkItemType, ToolItemType } from "@/data/Projects";
+import Link from "next/link";
 
-export const AnimatedTooltipTool = ({
-  items,
-}: {
-  items:ToolItemType[];
-}) => {
+export const AnimatedTooltipTool = ({ items }: { items: ToolItemType[] }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -37,7 +34,9 @@ export const AnimatedTooltipTool = ({
   return (
     <>
       {items.map((item, idx) => (
-        <div
+        <Link
+          href={`/project?search=${item.name}`}
+          prefetch={false}
           className="relative flex flex-row items-center justify-center gap-4"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(idx)}
@@ -74,7 +73,7 @@ export const AnimatedTooltipTool = ({
               </motion.div>
             )}
           </AnimatePresence> */}
-          
+
           <div onMouseMove={handleMouseMove}>
             <GlareCard
               className="flex flex-row items-center justify-center gap-4"
@@ -85,7 +84,7 @@ export const AnimatedTooltipTool = ({
               <p className=" text-white font-semibold text-md">{item.name}</p>
             </GlareCard>
           </div>
-        </div>
+        </Link>
       ))}
     </>
   );

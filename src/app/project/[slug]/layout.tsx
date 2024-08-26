@@ -1,4 +1,5 @@
 import { metadata } from "@/app/layout";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 import Projects from "@/data/Projects";
 import { Metadata } from "next";
 
@@ -9,7 +10,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
   const project = Projects.find((project) => project.slug === slug);
-  if(!project) return metadata;
+  if (!project) return metadata;
   return {
     title: project?.name,
     description: project?.description,
@@ -51,6 +52,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const LayoutProjectDetail = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>;
+  return (
+    <>
+      <TracingBeam className="px-6">{children}</TracingBeam>
+    </>
+  );
 };
 export default LayoutProjectDetail;
