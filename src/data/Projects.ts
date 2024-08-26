@@ -46,6 +46,7 @@ export type ProjectItemType = {
   images: string[];
   links: LinkItemType[];
   keywords: string[];
+  priority?: boolean;
 };
 
 const Projects: ProjectItemType[] = [
@@ -101,26 +102,8 @@ const Projects: ProjectItemType[] = [
       ),
       generateUrl("Website", "Web", "https://sampahmas.vercel.app"),
     ],
-    keywords: [
-      "Sampahmas",
-      "Waste Management System",
-      "Kotlin",
-      "Firebase",
-      "Google Maps",
-      "Android Studio",
-      "Location Based Services",
-      "C++",
-      "Internet of Things",
-      "TailwindCSS",
-      "Vending Machine",
-      "Object Detection",
-      "Video Pitch",                  
-      "Figma",
-      "Website",
-      "Mobile App",
-      "TailwindCSS",
-      "Vercel",
-    ],
+    keywords: [],
+    priority: true,
   },
   {
     slug: "didesa-village-information-system",
@@ -159,19 +142,8 @@ const Projects: ProjectItemType[] = [
       ),
       generateUrl("Website", "Web", "https://didesa.vercel.app"),
     ],
-    keywords: [
-      "DiDesa - Digitalisasi Desa",
-      "Village Information System",
-      "DiDesa",
-      "Digitalisasi Desa",
-      "NodeJS",
-      "ExpressJS",
-      "PostgreSQL",
-      "React",
-      "NextJS",
-      "React Native",
-      "TypeScript",
-    ],
+    keywords: [],
+    priority: true,
   },
   {
     slug: "lestari-wildlife-data-collection-application",
@@ -217,19 +189,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/Lestari-Mobile-Kotlin"
       ),
     ],
-    keywords: [
-      "Lestari",
-      "Wildlife Data Collection Application",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "Kotlin",
-      "Android Studio",
-      "PostgreSQL",
-      "NextJS",
-      "Flutter",
-      "Location Based Services",
-    ],
+    keywords: [],
   },
   {
     name: "Netflix Clone",
@@ -256,14 +216,8 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/WebsiteBucinNetflix"
       ),
     ],
-    keywords: [
-      "Netflix Clone",
-      "Website Bucin",
-      "Clone",
-      "NextJS",
-      "TailwindCSS",
-      "Vercel",
-    ],
+    keywords: ["Netflix Clone", "Website Bucin", "Clone", "NextJS", "Vercel"],
+    priority: true,
   },
   {
     name: "Website Pengaduan Masyarakat",
@@ -289,19 +243,13 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/WebsiteDesa"
       ),
     ],
-    keywords: [
-      "Website Pengaduan Masyarakat",
-      "Purwodadi",
-      "Complaint",
-      "PHP",
-      "MySQL",
-      "TailwindCSS",
-    ],
+    keywords: [],
+    priority: true,
   },
   {
     slug: "berijalan-redesign-user-interfaces",
     name: "Berijalan Redesign",
-    heading: "Redesign of Berijalan Website",
+    heading: "Redesign of Berijalan Website - Astra",
     date: "2024-07-01",
     types: ["Design"],
     tools: [generateTool("Figma")],
@@ -322,15 +270,8 @@ const Projects: ProjectItemType[] = [
         "https://www.linkedin.com/in/ghufronakbar/overlay/1720518467305/single-media-viewer/"
       ),
     ],
-    keywords: [
-      "Berijalan",
-      "Redesign",
-      "Website",
-      "Astra",
-      "Figma",
-      "UI Design",
-      "UI/UX",
-    ],
+    keywords: [],
+    priority: true,
   },
   {
     slug: "check-your-khodam",
@@ -361,23 +302,14 @@ const Projects: ProjectItemType[] = [
         "https://cek-khodam-online.up.railway.app/"
       ),
     ],
-    keywords: [
-      "Check Your Khodam",
-      "Check Khodam Online",
-      "Information System",
-      "Djinn",
-      "NodeJS",
-      "React",
-      "NextJS",
-      "Socket.io",
-      "Web Socket",
-    ],
+    keywords: [],
+    priority: true,
   },
 
   {
     slug: "event-ease-ticket-purchase-system",
     name: "Event Ease",
-    heading: "Information System For Ticket Purchases",
+    heading: "Event Ticketing System",
     types: ["Project", "Website", "Mobile App"],
     description:
       "It is a ticket booking system held by an organization. The organization requires approval from the admin regarding the account created and the event being held. Users can purchase tickets with existing stock. ",
@@ -415,17 +347,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/EventEase-DashboardOrganization-NextJS"
       ),
     ],
-    keywords: [
-      "EventEase",
-      "Event Ticketing System",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "Kotlin",
-      "Android Studio",
-      "MySQL",
-      "NextJS",
-    ],
+    keywords: [],
   },
   {
     slug: "supersos-emergency-call-system",
@@ -468,18 +390,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/SuperSOS-DashboardInstances-NextJS"
       ),
     ],
-    keywords: [
-      "SuperSOS",
-      "Emergency Call",
-      "SOS System",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "Kotlin",
-      "Android Studio",
-      "MySQL",
-      "NextJS",
-    ],
+    keywords: [],
   },
   {
     slug: "coffee-ordering-system",
@@ -517,18 +428,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/Goffee-DashboardAdmin-NextJS"
       ),
     ],
-    keywords: [
-      "Goffee",
-      "Coffee Ordering System",
-      "Cafe",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "Kotlin",
-      "Android Studio",
-      "MySQL",
-      "NextJS",
-    ],
+    keywords: [],
   },
   {
     slug: "radin-grocery-ordering-system",
@@ -566,18 +466,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/Radin-DashboardAdmin-NextJS"
       ),
     ],
-    keywords: [
-      "Radin",
-      "Grocery Ordering System",
-      "Grocery Store",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "Kotlin",
-      "Android Studio",
-      "MySQL",
-      "NextJS",
-    ],
+    keywords: [],
   },
   {
     slug: "ice-production-calculation-system",
@@ -609,19 +498,28 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/PenghitunganFuzzyTsukamoto-NextJS"
       ),
     ],
-    keywords: [
-      "Fuzzy Tsukamoto Calculation",
-      "Ice Production Calculation System",
-      "Ice Production",
-      "Fuzzy",
-      "Tsukamoto",
-      "NodeJS",
-      "React",
-      "ExpressJS",
-      "PostgreSQL",
-      "NextJS",
-    ],
+    keywords: [],
   },
 ];
+
+Projects.map((item) => {
+  const newKeywords: string[] = Array.from(
+    new Set([
+      item.name,
+      item.heading,
+      ...item.types.map((type) => type),
+      ...item.tools.map((tool) => tool.name),
+    ])
+  );
+  const combinedKeywords: string[] = Array.from(
+    new Set([...item.keywords, ...newKeywords])
+  );
+  item.keywords = combinedKeywords;
+  return item;
+});
+
+Projects.sort((a, b) => {
+  return (b.priority === true ? 1 : 0) - (a.priority === true ? 1 : 0);
+});
 
 export default Projects;

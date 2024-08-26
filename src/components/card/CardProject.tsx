@@ -34,7 +34,7 @@ const CardProject = ({
               <CardItem
                 as="p"
                 translateZ="60"
-                className="text-sm max-w-sm mt-2 text-neutral-300"
+                className="text-sm max-w-sm mt-2 text-neutral-300 line-clamp-1"
               >
                 {heading}
               </CardItem>

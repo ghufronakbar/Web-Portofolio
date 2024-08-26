@@ -107,7 +107,7 @@ const ProjectPage = () => {
               />
               <select
                 value={type}
-                className="w-full relative max-w-xl   bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left  truncate"
+                className="custom-select w-full relative max-w-x bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left truncate"
                 onChange={handleOnChangeType}
               >
                 <option value="" className="">
@@ -126,7 +126,7 @@ const ProjectPage = () => {
                   value={"latest"}
                   checked={order === "latest"}
                   onChange={handleOptionChange}
-                  className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-teal-600 bg-gray-700 border-gray-600"
                 />
                 <label>Oldest</label>
                 <input
@@ -134,7 +134,7 @@ const ProjectPage = () => {
                   value={"oldest"}
                   checked={order === "oldest"}
                   onChange={handleOptionChange}
-                  className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-teal-600 bg-gray-700 border-gray-600"
                 />
                 <label>Relevant</label>
                 <input
@@ -148,58 +148,20 @@ const ProjectPage = () => {
                       : true
                   }
                   onChange={handleOptionChange}
-                  className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-teal-600 bg-gray-700 border-gray-600"
                 />
               </div>
             </div>
           </div>
-          {search.length > 0 && filteredProjects.length > 0 && type === "" ? (
-            <h1 className="relative text-l font-normal -my-2">
-              Showing all results with keyword &quot;{search}&quot;
-            </h1>
-          ) : search.length === 0 &&
-            filteredProjects.length > 0 &&
-            type === "" ? (
-            <h1 className=" text-l font-normal -my-2">Showing all projects</h1>
-          ) : filteredProjects.length === 0 &&
-            type === "" &&
-            search.length > 0 ? (
-            <h1 className="text-l font-normal -my-2">
-              Sorry, there&apos;s no results with keyword &quot;{search}&quot;
-              :(
-            </h1>
-          ) : filteredProjects.length === 0 &&
-            type !== "" &&
-            search.length > 0 ? (
-            <h1 className="text-l font-normal -my-2">
-              Sorry, there&apos;s no results for &quot;{type}&quot; with keyword
-              &quot;{search}&quot; :(
-            </h1>
-          ) : filteredProjects.length === 0 &&
-            type !== "" &&
-            search.length === 0 ? (
-            <h1 className="text-l font-normal -my-2">
-              Sorry, there&apos;s no results for &quot;{type}&quot; :(
-            </h1>
-          ) : search.length === 0 &&
-            filteredProjects.length > 0 &&
-            type !== "" ? (
-            <h1 className="relative text-l font-normal -my-2">
-              Showing all results for &quot;{type}&quot;
-            </h1>
-          ) : search.length > 0 &&
-            filteredProjects.length > 0 &&
-            type !== "" ? (
-            <h1 className="relative text-l font-normal -my-2">
-              Showing all results for &quot;{type}&quot; with keyword &quot;
-              {search}&quot;
-            </h1>
-          ) : null}
-
+          <HandleResultText
+            type={type}
+            data={filteredProjects}
+            search={search}
+          />
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between ">
             {filteredProjects.map((item, index) => (
               <CardProject
-                key={index}
+                key={item.slug}
                 name={item.name}
                 heading={item.heading}
                 date={item.date}
@@ -222,3 +184,47 @@ const ProjectPage = () => {
 };
 
 export default ProjectPage;
+
+const HandleResultText = ({
+  search,
+  type,
+  data,
+}: {
+  search: string;
+  type: string;
+  data: ProjectItemType[];
+}) => {
+  return (
+    <>
+      {search.length > 0 && data.length > 0 && type === "" ? (
+        <h1 className="relative text-l font-normal -my-2">
+          Showing all results with keyword &quot;{search}&quot;
+        </h1>
+      ) : search.length === 0 && data.length > 0 && type === "" ? (
+        <h1 className=" text-l font-normal -my-2">Showing all projects</h1>
+      ) : data.length === 0 && type === "" && search.length > 0 ? (
+        <h1 className="text-l font-normal -my-2">
+          Sorry, there&apos;s no results with keyword &quot;{search}&quot; :(
+        </h1>
+      ) : data.length === 0 && type !== "" && search.length > 0 ? (
+        <h1 className="text-l font-normal -my-2">
+          Sorry, there&apos;s no results for &quot;{type}&quot; with keyword
+          &quot;{search}&quot; :(
+        </h1>
+      ) : data.length === 0 && type !== "" && search.length === 0 ? (
+        <h1 className="text-l font-normal -my-2">
+          Sorry, there&apos;s no results for &quot;{type}&quot; :(
+        </h1>
+      ) : search.length === 0 && data.length > 0 && type !== "" ? (
+        <h1 className="relative text-l font-normal -my-2">
+          Showing all results for &quot;{type}&quot;
+        </h1>
+      ) : search.length > 0 && data.length > 0 && type !== "" ? (
+        <h1 className="relative text-l font-normal -my-2">
+          Showing all results for &quot;{type}&quot; with keyword &quot;
+          {search}&quot;
+        </h1>
+      ) : null}
+    </>
+  );
+};

@@ -36,7 +36,11 @@ body {
   display: none;
 }
 
-
+.custom-select {  
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none;   
+}
 
 @media (max-width: 768px) {
   .no-margin-xy {
