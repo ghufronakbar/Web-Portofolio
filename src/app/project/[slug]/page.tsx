@@ -1,20 +1,22 @@
 "use client";
 
-import { AnimatedTooltipSocmed } from "@/components/ui/animated-tooltip-socmed";
 import { AnimatedTooltipTool } from "@/components/ui/animated-tooltip-tool";
 import Projects from "@/data/Projects";
 import Image from "next/image";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { useState } from "react";
 import ShowImage from "@/components/detail/ShowImage";
 import PlaceHolderImage from "@/data/PlaceholderImage";
 import { AnimatedTooltipLink } from "@/components/ui/animated-tooltip-link";
 
-const ProjectID = () => {
-  const params = useParams();
-  const project = Projects.find(
-    (project) => project.slug === params.slug
-  );
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
+const ProjectID = ({ params }: Params) => {
+  const project = Projects.find((project) => project.slug === params.slug);
 
   const [image, setImage] = useState<string>(project?.images[0] || "");
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -51,8 +53,8 @@ const ProjectID = () => {
                   src={image}
                   alt={project?.name}
                   width={120}
-                  height={120}                  
-                  className="object-cover aspect-square"                  
+                  height={120}
+                  className="object-cover aspect-square"
                 />
               </div>
             ))}
