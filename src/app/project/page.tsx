@@ -5,8 +5,13 @@ import { PlaceholdersAndVanishInputSearch } from "@/components/ui/placeholders-a
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import PlaceholdersSearch from "@/data/PlaceholdersSearch";
 import Projects, { ProjectItemType } from "@/data/Projects";
+import filterFavorite, {
+  FavoritedProjectsType,
+} from "@/services/projects/filterFavorite";
+import getItemFavorite from "@/services/projects/getItemFavorite";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const ProjectPage = () => {
   const router = useRouter();
@@ -15,10 +20,18 @@ const ProjectPage = () => {
     searchParams.get("search") || ""
   );
   const [order, setOrder] = useState<string>(searchParams.get("order") || "");
-
   const [type, setType] = useState<string>(searchParams.get("type") || "");
   const allTypes = Projects.flatMap((item) => item.types);
   const uniqueTypes = Array.from(new Set(allTypes));
+  const [favSlug, setFavSlug] = useState<string[]>([]);
+  const [favProjects, setFavProjects] = useState<FavoritedProjectsType[]>([]);
+
+  useEffect(() => {
+    const favoriteItems = getItemFavorite();
+    setFavSlug(favoriteItems);
+    filterFavorite(Projects, favSlug);
+    setFavProjects(filterFavorite(Projects, favSlug));
+  }, [favSlug]);
 
   useEffect(() => {
     setSearch(searchParams.get("search") || "");
@@ -38,8 +51,8 @@ const ProjectPage = () => {
     keyword: string,
     type: string,
     orderBy: string
-  ): ProjectItemType[] => {
-    const filteredProjects = Projects.filter((project) => {
+  ): FavoritedProjectsType[] => {
+    const filteredProjects = favProjects.filter((project) => {
       let keywordMatch = false;
       let typeMatch = false;
 
@@ -107,7 +120,7 @@ const ProjectPage = () => {
               />
               <select
                 value={type}
-                className="custom-select w-full relative max-w-x bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left truncate"
+                className="custom-select w-full relative max-w-xl  bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end text-zinc-500 text-sm sm:text-base font-normal  pl-4 sm:pl-12 text-left truncate"
                 onChange={handleOnChangeType}
               >
                 <option value="" className="">
@@ -159,26 +172,46 @@ const ProjectPage = () => {
             search={search}
           />
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between ">
-            {filteredProjects.map((item, index) => (
-              <CardProject
-                key={item.slug}
-                name={item.name}
-                heading={item.heading}
-                date={item.date}
-                images={item.images}
-                slug={item.slug}
-                description={item.description}
-                jobdesc={item.jobdesc}
-                keywords={item.keywords}
-                tools={item.tools}
-                links={item.links}
-                types={item.types}
-                className="w-full"
-              />
-            ))}
+            {filteredProjects
+              .sort(
+                (a, b) =>
+                  (b.favorite === true ? 1 : 0) - (a.favorite === true ? 1 : 0)
+              )
+              .map((item) => (
+                <CardProject
+                  key={item.slug}
+                  name={item.name}
+                  heading={item.heading}
+                  date={item.date}
+                  images={item.images}
+                  slug={item.slug}
+                  description={item.description}
+                  jobdesc={item.jobdesc}
+                  keywords={item.keywords}
+                  tools={item.tools}
+                  links={item.links}
+                  types={item.types}
+                  favorite={item.favorite}
+                  className="w-full"                  
+                />
+              ))}
           </div>
         </div>
       </TracingBeam>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        limit={5}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </>
   );
 };
