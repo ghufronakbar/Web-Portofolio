@@ -19,13 +19,18 @@ const ProjectSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6 lg:gap-6 justify-between">
           {Projects.slice(0, 3).map((item, index) => (
               <CardProject
-                key={index}
-                id={item.id}
+                key={index}                
                 name={item.name}
                 heading={item.heading}
                 date={item.date}
                 images={item.images}
-                link={`/project/${item.slug}`}
+                description={item.description}
+                jobdesc={item.jobdesc}
+                keywords={item.keywords}
+                links={item.links}
+                slug={item.slug}
+                tools={item.tools}
+                types={item.types}
                 className="max-w-full"
               />            
           ))}
