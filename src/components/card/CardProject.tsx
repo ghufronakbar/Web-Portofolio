@@ -22,7 +22,7 @@ const CardProject = ({
     const [image, setImage] = useState<string>(images[0]);
     return (
       <>
-        <Link href={`/project/${slug}`} className={className}>
+        <Link prefetch={false} href={`/project/${slug}`} className={className}>
           <CardContainer className="w-full" >
             <CardBody className="relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2]  w-full sm:w-[30rem] h-auto rounded-xl p-6 border">
               <CardItem

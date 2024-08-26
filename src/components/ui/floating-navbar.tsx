@@ -60,7 +60,7 @@ export const FloatingNav = ({
         )}
       >
         {navItems.map((navItem: any, idx: number) => (
-          <Link
+          <Link prefetch={false}
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(

@@ -10,7 +10,7 @@ const ProjectSection = () => {
         <div className="flex flex-row items-center justify-between mb-8">
           <h2 className="text-2xl font-semibold">Portofolio</h2>
           <div className="flex flex-row items-center justify-between">
-            <Link href="/project" >
+            <Link prefetch={false} href="/project" >
               <span className="relative top-[-1.5px]">See All</span>
             </Link>
             <BiChevronRight />

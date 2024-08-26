@@ -15,7 +15,7 @@ const NotFound = () => {
         </div>
         <div className="flex flex-row gap-1 items-center">
           <div className="text-l font-normal">Return to</div>
-          <Link className="text-l font-normal text-blue-500 curson-pointer" href={'/'}>Portofolio</Link>
+          <Link prefetch={false} className="text-l font-normal text-blue-500 curson-pointer" href={'/'}>Portofolio</Link>
         </div>
       </div>
     </div>

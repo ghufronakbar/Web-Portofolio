@@ -35,7 +35,7 @@ export const AnimatedTooltipLink = ({ items }: { items: LinkItemType[] }) => {
   return (
     <>
       {items.map((item, idx) => (
-        <Link
+        <Link prefetch={false}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"

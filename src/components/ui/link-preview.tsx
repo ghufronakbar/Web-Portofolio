@@ -131,7 +131,7 @@ export const LinkPreview = ({
                   x: translateX,
                 }}
               >
-                <Link
+                <Link prefetch={false}
                   href={url}
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl  hover:border-neutral-800"
                   style={{ fontSize: 0 }}

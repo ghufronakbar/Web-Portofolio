@@ -40,7 +40,7 @@ export const AnimatedTooltipSocmed = ({
   return (
     <>
       {items.map((item, idx) => (
-        <Link href={item.url} target="_blank" rel="noopener noreferrer" key={idx} >        
+        <Link prefetch={false} href={item.url} target="_blank" rel="noopener noreferrer" key={idx} >        
         <div
           className="relative  flex flex-row items-center justify-center gap-4"          
           onMouseEnter={() => setHoveredIndex(idx + 1)}
