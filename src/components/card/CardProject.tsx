@@ -66,12 +66,12 @@ const CardProject = ({
           </CardItem>
           <CardItem translateZ="100" className="w-full mt-4">
             <Image
-              src={image}
+              src={images[0]}
               height={800}
               width={600}
               className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
               alt={name}
-              onError={() => setImage("/images/placeholder.webp")}
+              // onError={() => setImage("/images/placeholder.webp")}
             />
           </CardItem>
           <div className="flex justify-between items-center mt-20">

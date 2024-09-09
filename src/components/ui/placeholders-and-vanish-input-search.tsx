@@ -7,13 +7,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export function PlaceholdersAndVanishInputSearch({
   placeholders,
-  onChange,
-  onSubmit,
+  onChange,  
   className,
 }: {
   placeholders: string[];
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;  
   className?: string;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
@@ -50,9 +48,7 @@ export function PlaceholdersAndVanishInputSearch({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [search, setSearch] = useState<string>(searchParams.get("search")||"");
-  const [order, setOrder] = useState<string>(searchParams.get("order") || "");
-  const [type, setType] = useState<string>(searchParams.get("type") || "");
+  const [search, setSearch] = useState<string>(searchParams.get("search")||"");  
   const [animating, setAnimating] = useState(false);
   
   const draw = useCallback(() => {
@@ -176,30 +172,14 @@ export function PlaceholdersAndVanishInputSearch({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    vanishAndSubmit();
-    router.push(`/project?search=${search}&type=${type}&order=${order}`);
-    // onSubmit && onSubmit(e);
-  };
 
-  useEffect(() => {
-    const search = searchParams.get("search");    
-    const type = searchParams.get("type");
-    const order = searchParams.get("order");
-    setType(type || "");
-    setSearch(search || "");
-    setOrder(order || "");
-  },[searchParams])
-
-  
   return (
     <form
       className={cn(
         "w-full relative max-w-xl  bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 self-end",
         search && "bg-zinc-800"
       )}
-      onSubmit={handleSubmit}
+      onSubmit={(e) => e.preventDefault()}
     >
       <canvas
         className={cn(
@@ -212,8 +192,8 @@ export function PlaceholdersAndVanishInputSearch({
         onChange={(e) => {          
           if (!animating) {
             setSearch(e.target.value);            
-            // onChange && onChange(e);
-            router.push(`/project?search=${e.target.value}&type=${type}&order=${order}`);
+            onChange && onChange(e);
+            // router.push(`/project?search=${e.target.value}&type=${type}&order=${order}`);
           }
         }}
         onKeyDown={handleKeyDown}

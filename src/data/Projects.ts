@@ -86,7 +86,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/Sampahmas-ObjectDetection-IOT"
       ),
       generateUrl(
-        "User Interface Design",
+        "UI/UX Design",
         "Figma",
         "https://www.figma.com/design/rWtsf90SoVPv8nKiR4Nuyo/SAMPAHMAS-Waste-Management-System"
       ),
@@ -142,6 +142,7 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/DiDesa-Website-NextJS"
       ),
       generateUrl("Website", "Web", "https://didesa.vercel.app"),
+      generateUrl("Mobile App", "Web", "https://didesa.vercel.app/api/download"),
     ],
     keywords: [],
     priority: true,
@@ -262,7 +263,7 @@ const Projects: ProjectItemType[] = [
     images: generateImages(9, "berijalan-redesign"),
     links: [
       generateUrl(
-        "User Interface Design",
+        "UI/UX Design",
         "Figma",
         "https://www.figma.com/design/BQ3Jl9SCdBEJdyj2Yr4Vt4/FTI-FEST-UKDW-2023"
       ),

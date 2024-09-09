@@ -70,7 +70,7 @@ export const LinkPreview = ({
   const handleMouseMove = (event: any) => {
     const targetRect = event.target.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
-    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
+    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; 
     x.set(offsetFromCenter);
   };
 
@@ -99,8 +99,9 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
-          className={cn(" text-white", className)}
+          className={cn("text-black dark:text-white", className)}
           href={url}
+          target="_blank"
         >
           {children}
         </HoverCardPrimitive.Trigger>
@@ -131,10 +132,11 @@ export const LinkPreview = ({
                   x: translateX,
                 }}
               >
-                <Link prefetch={false}
+                <Link
                   href={url}
-                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl  hover:border-neutral-800"
+                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
                   style={{ fontSize: 0 }}
+                  target="_blank"
                 >
                   <Image
                     src={isStatic ? imageSrc : src}

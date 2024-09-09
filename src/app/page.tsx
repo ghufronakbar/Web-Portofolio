@@ -4,7 +4,7 @@ import Portofolio from "./portofolio/page";
 const Home = () => {
   return (
     <>
-      <TracingBeam className="px-6">
+      <TracingBeam className="px-6">        
         <Portofolio />
       </TracingBeam>
     </>

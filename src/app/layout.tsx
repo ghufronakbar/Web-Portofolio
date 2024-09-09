@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   creator: "Lans The Prodigy",
   publisher: "Lans The Prodigy",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/images/letter-l.png",
+    shortcut: "/images/letter-l.png",
   },
   openGraph: {
     title: "Lans The Prodigy | Ghufron Akbar",
@@ -80,19 +80,16 @@ const RootLayout = ({
 }>) => {
   return (
     <>
-      <html lang="en">
-        <head>
-          <link rel="icon" href="/images/letter-l.png" sizes="any" />
-        </head>
+      <html lang="en">        
         <body className={`${inter.className} hide-scrollbar`}>
           <FloatingNav navItems={NavItems} />
-            <BackgroundBeams />
+            {/* <BackgroundBeams /> */}
             <Spotlight
-              className="absolute h-full w-full transition-all duration-300 ease-in-out"
+              className="fixed h-full w-full transition-all duration-300 ease-in-out -z-50"
               fill="white"
             />
             {children}
-          <UnderConstruction />
+          {/* <UnderConstruction /> */}
         </body>
       </html>
     </>
