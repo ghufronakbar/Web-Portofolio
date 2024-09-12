@@ -3,9 +3,8 @@
 import AboutMe from "@/data/AboutMe";
 import Image from "next/image";
 import { TypewriterEffectSmooth } from "@/components/ui/typewritter-effect";
-import axios from "axios";
-import { useState } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
+import Link from "next/link";
 
 const AboutMeSection = () => {
   const name = AboutMe.name
@@ -13,22 +12,6 @@ const AboutMeSection = () => {
     .map((text) => ({ text: text, className: "text-4xl font-bold" }));
   const title = AboutMe.title;
 
-  const downloadCV = async () => {
-    try {
-      const response = await axios.get("/api/download", {
-        responseType: "blob",
-      });
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "cv_ghufron_akbar.pdf");
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error("Error downloading the file:", error);
-    }
-  };
   return (
     <div className="flex flex-col justify-between md:items-start gap-5">
       <div className="flex md:flex-row md:items-center gap-10 flex-col md:self-center">
@@ -52,12 +35,14 @@ const AboutMeSection = () => {
         </div>
       </div>
       <div className="mt-4">{AboutMe.description} </div>
-      <button
-        className="relative bg-blue-500 hover:bg-black hover:text-blue-500 text-white font-bold py-2 px-4 rounded mt-4 outline outline-2 outline-blue-500 transition-all duration-300 self-start"
-        onClick={() => downloadCV()}
+      <Link
+        className="w-fit shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400"
+        href={"/api/download"}
+        prefetch={false}
+        target="_blank"
       >
         Download CV
-      </button>
+      </Link>
     </div>
   );
 };

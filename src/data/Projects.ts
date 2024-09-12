@@ -25,11 +25,18 @@ const generateUrl = (
   return { name, icon, url };
 };
 
-const generateImages = (count: number, projectFolder: string): string[] => {
+const generateImages = (
+  count: number,
+  projectFolder: string,
+  demo?: boolean
+): string[] => {
   const prefixFolder = "/images/projects";
   const images: string[] = [];
   for (let i = 1; i <= count; i++) {
     images.push(`${prefixFolder}/${projectFolder}/${i}.png`);
+  }
+  if (demo) {
+    images.push(`${prefixFolder}/${projectFolder}/demo.gif`);
   }
   return images;
 };
@@ -142,7 +149,11 @@ const Projects: ProjectItemType[] = [
         "https://GitHub.com/ghufronakbar/DiDesa-Website-NextJS"
       ),
       generateUrl("Website", "Web", "https://didesa.vercel.app"),
-      generateUrl("Mobile App", "Web", "https://didesa.vercel.app/api/download"),
+      generateUrl(
+        "Mobile App",
+        "Web",
+        "https://didesa.vercel.app/api/download"
+      ),
     ],
     keywords: [],
     priority: true,
@@ -277,15 +288,17 @@ const Projects: ProjectItemType[] = [
     priority: true,
   },
   {
-    slug: "check-your-khodam",
-    name: "Check Your Khodam",
+    slug: "cek-khodam-online",
+    name: "Cek Khodam Online",
     heading: "Information System Analyzing the Djinn",
     date: "2024-07-01",
     types: ["Mini Project", "Website", "Public"],
     tools: [
       generateTool("NodeJS"),
+      generateTool("TypeScript"),
       generateTool("React"),
       generateTool("NextJS"),
+      generateTool("TailwindCSS"),
       generateTool("Railway"),
       generateTool("Socket.io"),
     ],
@@ -293,7 +306,7 @@ const Projects: ProjectItemType[] = [
       "It is a website that was created because it followed the trend of the time. Created using Next JS as a frontend and backend. Using Web Socket to ensure realtime data fetching.",
     jobdesc:
       "The website creation process is done in monolite using NextJS. There is no need for a database in this application. Using socket.io to do realtime data fetching for other users.",
-    images: generateImages(4, "check-khodam"),
+    images: generateImages(4, "check-khodam", true),
     links: [
       generateUrl(
         "Website",
