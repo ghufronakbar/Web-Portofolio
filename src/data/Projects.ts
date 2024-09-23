@@ -169,39 +169,18 @@ const Projects: ProjectItemType[] = [
     date: "2024-03-01",
     types: ["Project", "Website", "Mobile App"],
     tools: [
-      generateTool("Flutter"),
+      generateTool("React Native"),
       generateTool("ExpressJS"),
       generateTool("NodeJS"),
       generateTool("React"),
       generateTool("NextJS"),
       generateTool("PostgreSQL"),
-      generateTool("Kotlin"),
-      generateTool("Firebase"),
-      generateTool("Android Studio"),
+      generateTool("TypeScript"),
       generateTool("Google Maps"),
     ],
-    images: generateImages(7, "lestari"),
+    images: generateImages(13, "lestari"),
     links: [
-      generateUrl(
-        "Mobile App",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/Lestari-Mobile-Flutter"
-      ),
-      generateUrl(
-        "Web Server",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/Lestari-Backend-ExpressJS"
-      ),
-      generateUrl(
-        "Dashboard Admin",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/Lestari-DashboardAdmin-NextJS"
-      ),
-      generateUrl(
-        "Mobile App (Beta)",
-        "GitHub",
-        "https://GitHub.com/ghufronakbar/Lestari-Mobile-Kotlin"
-      ),
+      generateUrl("Website", "Web", "https://lestari-website.vercel.app"),
     ],
     keywords: [],
   },
