@@ -34,6 +34,7 @@ const ProjectPage = () => {
   const [favProjects, setFavProjects] = useState<FavoritedProjectsType[]>([]);
 
   useEffect(() => {
+    // console.log(JSON.stringify(filteredProjects));
     const favoriteItems = getItemFavorite();
     setFavSlug(favoriteItems);
     filterFavorite(Projects, favSlug);
